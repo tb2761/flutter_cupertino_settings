@@ -22,11 +22,16 @@ CSWidgetStyle brightnessStyle = const CSWidgetStyle(
 CupertinoSettings(
     items: <Widget>[
         const CSHeader('Brightness'),
-        CSWidget(CupertinoSlider(value: 0.5), style: brightnessStyle),
+        CSWidget(
+            CupertinoSlider(value: 0.5), 
+            style: brightnessStyle,
+            addPaddingToBorder: true,
+        ),
         CSControl(
             nameWidget: Text('Auto brightness'),
-            contentWidget: CupertinoSwitch(value: true), 
+            contentWidget: CupertinoSwitch(value: true),
             style: brightnessStyle,
+            addPaddingToBorder: false,
         ),
         CSHeader('Selection'),
         CSSelection<int>(
@@ -40,12 +45,22 @@ CupertinoSettings(
         CSDescription('Using Night mode extends battery life on devices with OLED display',),
         const CSHeader(''),
         CSControl(
-            nameWidget: Text('Loading...'), 
+            nameWidget: Text('Loading...'),
             contentWidget: CupertinoActivityIndicator(),
         ),
-        CSButton(CSButtonType.DEFAULT, "Licenses", (){ print("It works!"); }),
-        const CSHeader(''),
-        CSButton(CSButtonType.DESTRUCTIVE, "Delete all data", (){})
+        CSButton(
+            child: Text("Licenses"),
+            pressed: () {
+              print("It works!");
+            },
+            buttonType: CSButtonType.DEFAULT,
+        ),
+        const CSHeader(""),
+        CSButton(
+            child: Text("Delete all data"),
+            pressed: () {},
+            buttonType: CSButtonType.DESTRUCTIVE,
+        ),
     ]
 );
 ```
@@ -53,6 +68,7 @@ CupertinoSettings(
 ![](screenshots/scr1.png)
 
 ### Contributors
+
 - Dark theme & example by [AppleEducate](https://github.com/appleeducate)
 - CSSecret by [SimonIT](https://github.com/SimonIT)
 - iOS 13 support by [Tim Bierbaum](https://github.com/bierbaumtim)
