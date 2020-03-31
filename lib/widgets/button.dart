@@ -20,21 +20,23 @@ part of flutter_cupertino_settings;
 /// 1) The button can be aligned
 /// 2) The entire row is touch-sensitive
 class CSButton extends CSWidget {
+  /// Default: CS_TITLE_FONT_SIZE which is actually 16.0
   final double fontSize;
   final CSButtonType buttonType;
-  final String text;
   final VoidCallback pressed;
+  final Widget child;
 
-  CSButton(
-    this.buttonType,
-    this.text,
-    this.pressed, {
-    CSWidgetStyle style = CS_DEFAULT_STYLE,
-    this.fontSize = CS_TITLE_FONT_SIZE,
+  CSButton({
+    @required this.child,
+    @required this.pressed,
+    @required this.buttonType,
+    this.fontSize,
+    CSWidgetStyle style,
     Color backgroundColor,
-    bool addPaddingToBorder = false,
-    bool showTopBorder = false,
-  }) : super(
+    bool addPaddingToBorder,
+    bool showTopBorder,
+  })  : assert(child != null),
+        super(
           Flex(
             direction: Axis.horizontal,
             children: <Widget>[
@@ -43,20 +45,20 @@ class CSButton extends CSWidget {
                   padding: EdgeInsets.zero,
                   onPressed: pressed,
                   child: Container(
-                    alignment: buttonType.alignment,
-                    child: Text(
-                      text,
+                    alignment: (buttonType ?? CSButtonType.DEFAULT).alignment,
+                    child: DefaultTextStyle(
                       style: TextStyle(
-                        color: buttonType.color,
-                        fontSize: fontSize,
+                        color: (buttonType ?? CSButtonType.DEFAULT).color,
+                        fontSize: fontSize ?? CS_TITLE_FONT_SIZE,
                       ),
+                      child: child,
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          style: style,
+          style: style ?? CS_DEFAULT_STYLE,
           backgroundColor: backgroundColor,
           addPaddingToBorder: addPaddingToBorder,
           showTopBorder: showTopBorder,
