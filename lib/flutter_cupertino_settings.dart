@@ -35,9 +35,15 @@ const double CS_BORDER_WIDTH = 0.75;
 /// Event for [CSSelection]
 typedef void SelectionCallback(int selected);
 
-TextStyle basicTextStyle(BuildContext context) => Platform.isIOS
-    ? CupertinoTheme.of(context).textTheme.textStyle
-    : Theme.of(context).textTheme.subhead;
+TextStyle basicTextStyle(BuildContext context) {
+  if (kIsWeb) {
+    return Theme.of(context).textTheme.subhead;
+  } else if (Platform.isIOS || Platform.isMacOS) {
+    return CupertinoTheme.of(context).textTheme.textStyle;
+  } else {
+    return Theme.of(context).textTheme.subhead;
+  }
+}
 
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
