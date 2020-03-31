@@ -23,7 +23,7 @@ class CSSelection<T> extends StatefulWidget {
     this.items,
     this.onSelected,
     this.currentSelection,
-    this.fontSize = CS_TITLE_FONT_SIZE,
+    this.fontSize,
     this.backgroundColor,
   });
 
@@ -75,7 +75,7 @@ class CSSelectionState<T> extends State<CSSelection> {
                 item.text,
                 style: TextStyle(
                   color: CupertinoColors.label.resolveFrom(context),
-                  fontSize: widget.fontSize,
+                  fontSize: widget.fontSize ?? CS_TITLE_FONT_SIZE,
                 ),
               ),
             ),

@@ -6,8 +6,14 @@ part of flutter_cupertino_settings;
 /// The optional [style] attribute allows to specify a style (e.g. an Icon)
 class CSWidget extends StatelessWidget {
   final AlignmentGeometry alignment;
+  
+  /// Default: false
   final bool addPaddingToBorder;
+  
+  /// Default: false
   final bool showTopBorder;
+
+  /// Default: CupertinoColors.secondarySystemGroupedBackground
   final Color backgroundColor;
   final CSWidgetStyle style;
   final double height;
@@ -18,8 +24,8 @@ class CSWidget extends StatelessWidget {
     this.alignment,
     this.height = CS_ITEM_HEIGHT,
     this.style = CS_DEFAULT_STYLE,
-    this.addPaddingToBorder = false,
-    this.showTopBorder = false,
+    this.addPaddingToBorder,
+    this.showTopBorder,
     this.backgroundColor,
   });
 
@@ -52,7 +58,7 @@ class CSWidget extends StatelessWidget {
             CupertinoColors.secondarySystemGroupedBackground
                 .resolveFrom(context),
         border: Border(
-          top: showTopBorder
+          top: (showTopBorder ?? false)
               ? BorderSide(
                   color: CupertinoColors.opaqueSeparator.resolveFrom(context),
                   width: CS_BORDER_WIDTH,
@@ -62,11 +68,11 @@ class CSWidget extends StatelessWidget {
       ),
       constraints: const BoxConstraints(minHeight: 42),
       padding: EdgeInsets.only(
-        left: addPaddingToBorder ? padding.left : 0,
+        left: (addPaddingToBorder ?? false) ? padding.left : 0,
       ),
       child: Container(
         padding: padding.copyWith(
-          left: addPaddingToBorder ? 2 : padding.left + 2,
+          left: (addPaddingToBorder ?? false) ? 2 : padding.left + 2,
         ),
         decoration: BoxDecoration(
           border: Border(

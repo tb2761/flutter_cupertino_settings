@@ -11,20 +11,20 @@ class CSControl extends CSWidget {
   CSControl({
     this.nameWidget,
     this.contentWidget,
-    CSWidgetStyle style = CS_DEFAULT_STYLE,
-    this.fontSize = CS_TITLE_FONT_SIZE,
-    bool addPaddingToBorder = true,
-    bool showTopBorder = false,
+    CSWidgetStyle style,
+    this.fontSize,
+    bool addPaddingToBorder,
+    bool showTopBorder,
     Color backgroundColor,
   }) : super(
           _ControlWidget(
-            fontSize: fontSize,
+            fontSize: fontSize ?? CS_TITLE_FONT_SIZE,
             contentWidget: contentWidget,
             nameWidget: nameWidget,
           ),
-          style: style,
-          addPaddingToBorder: addPaddingToBorder,
-          showTopBorder: showTopBorder,
+          style: style ?? CS_DEFAULT_STYLE,
+          addPaddingToBorder: addPaddingToBorder ?? true,
+          showTopBorder: showTopBorder ?? false,
           backgroundColor: backgroundColor,
         );
 }

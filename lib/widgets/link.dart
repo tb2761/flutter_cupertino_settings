@@ -20,11 +20,11 @@ class CSLink extends StatelessWidget {
     this.onPressed,
     this.subtitle,
     this.detail,
-    this.style = CS_DEFAULT_STYLE,
-    this.titleFontSize = CS_TITLE_FONT_SIZE,
-    this.subTitleFontSize = CS_SUBTITLE_FONT_SIZE,
-    this.addPaddingToBorder = true,
-    this.showTopBorder = false,
+    this.style,
+    this.titleFontSize,
+    this.subTitleFontSize,
+    this.addPaddingToBorder,
+    this.showTopBorder,
     this.trailing,
     this.cellType = CellType.defaultStyle,
     this.backgroundColor,
@@ -59,7 +59,7 @@ class CSLink extends StatelessWidget {
                     title,
                     style: basicTextStyle(context).copyWith(
                       color: CupertinoColors.label.resolveFrom(context),
-                      fontSize: titleFontSize,
+                      fontSize: titleFontSize ?? CS_TITLE_FONT_SIZE,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -71,7 +71,7 @@ class CSLink extends StatelessWidget {
                       style: basicTextStyle(context).copyWith(
                         color:
                             CupertinoColors.secondaryLabel.resolveFrom(context),
-                        fontSize: subTitleFontSize,
+                        fontSize: subTitleFontSize ?? CS_SUBTITLE_FONT_SIZE,
                         fontWeight: FontWeight.w400,
                       ),
                       maxLines: 1,
@@ -92,19 +92,21 @@ class CSLink extends StatelessWidget {
               ),
               const SizedBox(width: 4),
             ],
-            trailing ?? onPressed != null
-                ? Icon(
-                    CupertinoIcons.right_chevron,
-                    color: CupertinoColors.secondaryLabel.resolveFrom(context),
-                    size: 20,
-                  )
-                : Container(),
+            trailing ??
+                (onPressed != null
+                    ? Icon(
+                        CupertinoIcons.right_chevron,
+                        color:
+                            CupertinoColors.secondaryLabel.resolveFrom(context),
+                        size: 20,
+                      )
+                    : Container()),
           ],
         ),
       ),
-      style: style,
-      addPaddingToBorder: addPaddingToBorder,
-      showTopBorder: showTopBorder,
+      style: style ?? CS_DEFAULT_STYLE,
+      addPaddingToBorder: addPaddingToBorder ?? true,
+      showTopBorder: showTopBorder ?? false,
       backgroundColor: backgroundColor,
     );
   }

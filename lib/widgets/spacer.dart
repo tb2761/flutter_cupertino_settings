@@ -1,12 +1,15 @@
 part of flutter_cupertino_settings;
 
 class CSSpacer extends StatelessWidget {
-  final bool showBorder;
+  /// Default: true
+  final bool showBottomBorder;
+
+  /// Default: CupertinoColors.systemGroupedBackground
   final Color backgroundColor;
 
   const CSSpacer({
     Key key,
-    this.showBorder = true,
+    this.showBottomBorder,
     this.backgroundColor,
   }) : super(key: key);
 
@@ -18,7 +21,7 @@ class CSSpacer extends StatelessWidget {
         color: backgroundColor ??
             CupertinoColors.systemGroupedBackground.resolveFrom(context),
         border: Border(
-          bottom: showBorder
+          bottom: (showBottomBorder ?? true)
               ? BorderSide(
                   color: CupertinoColors.opaqueSeparator.resolveFrom(context),
                   width: CS_BORDER_WIDTH,
