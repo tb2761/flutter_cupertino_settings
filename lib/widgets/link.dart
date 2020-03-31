@@ -2,16 +2,17 @@ part of flutter_cupertino_settings;
 
 /// Provides a button for navigation
 class CSLink extends StatelessWidget {
+  final bool addPaddingToBorder;
+  final bool showTopBorder;
+  final double titleFontSize;
+  final double subTitleFontSize;
   final String title;
   final String subtitle;
   final String detail;
-  final VoidCallback onPressed;
-  final double titleFontSize;
-  final double subTitleFontSize;
-  final CSWidgetStyle style;
-  final bool addPaddingToBorder;
-  final bool showTopBorder;
   final Widget trailing;
+  final Color backgroundColor;
+  final VoidCallback onPressed;
+  final CSWidgetStyle style;
   final CellType cellType;
 
   const CSLink({
@@ -26,6 +27,7 @@ class CSLink extends StatelessWidget {
     this.showTopBorder = false,
     this.trailing,
     this.cellType = CellType.defaultStyle,
+    this.backgroundColor,
   });
 
   @override
@@ -90,18 +92,20 @@ class CSLink extends StatelessWidget {
               ),
               const SizedBox(width: 4),
             ],
-            trailing ??
-                Icon(
-                  CupertinoIcons.right_chevron,
-                  color: CupertinoColors.secondaryLabel.resolveFrom(context),
-                  size: 20,
-                ),
+            trailing ?? onPressed != null
+                ? Icon(
+                    CupertinoIcons.right_chevron,
+                    color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                    size: 20,
+                  )
+                : Container(),
           ],
         ),
       ),
       style: style,
       addPaddingToBorder: addPaddingToBorder,
       showTopBorder: showTopBorder,
+      backgroundColor: backgroundColor,
     );
   }
 }

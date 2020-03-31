@@ -20,10 +20,10 @@ part of flutter_cupertino_settings;
 /// 1) The button can be aligned
 /// 2) The entire row is touch-sensitive
 class CSButton extends CSWidget {
+  final double fontSize;
   final CSButtonType buttonType;
   final String text;
   final VoidCallback pressed;
-  final double fontSize;
 
   CSButton(
     this.buttonType,
@@ -31,6 +31,9 @@ class CSButton extends CSWidget {
     this.pressed, {
     CSWidgetStyle style = CS_DEFAULT_STYLE,
     this.fontSize = CS_TITLE_FONT_SIZE,
+    Color backgroundColor,
+    bool addPaddingToBorder = false,
+    bool showTopBorder = false,
   }) : super(
           Flex(
             direction: Axis.horizontal,
@@ -54,6 +57,9 @@ class CSButton extends CSWidget {
             ],
           ),
           style: style,
+          backgroundColor: backgroundColor,
+          addPaddingToBorder: addPaddingToBorder,
+          showTopBorder: showTopBorder,
         );
 }
 

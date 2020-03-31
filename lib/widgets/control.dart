@@ -14,6 +14,8 @@ class CSControl extends CSWidget {
     CSWidgetStyle style = CS_DEFAULT_STYLE,
     this.fontSize = CS_TITLE_FONT_SIZE,
     bool addPaddingToBorder = true,
+    bool showTopBorder = false,
+    Color backgroundColor,
   }) : super(
           _ControlWidget(
             fontSize: fontSize,
@@ -22,6 +24,8 @@ class CSControl extends CSWidget {
           ),
           style: style,
           addPaddingToBorder: addPaddingToBorder,
+          showTopBorder: showTopBorder,
+          backgroundColor: backgroundColor,
         );
 }
 

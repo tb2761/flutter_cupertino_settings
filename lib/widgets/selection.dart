@@ -17,12 +17,14 @@ class CSSelection<T> extends StatefulWidget {
   final void Function(T selected) onSelected;
   final T currentSelection;
   final double fontSize;
+  final Color backgroundColor;
 
   const CSSelection({
     this.items,
     this.onSelected,
     this.currentSelection,
     this.fontSize = CS_TITLE_FONT_SIZE,
+    this.backgroundColor,
   });
 
   @override
@@ -48,6 +50,7 @@ class CSSelectionState<T> extends State<CSSelection> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: items.map<Widget>((item) => createItem(context, item)).toList(),
     );
   }
@@ -88,6 +91,7 @@ class CSSelectionState<T> extends State<CSSelection> {
       ),
       addPaddingToBorder: items.last != item,
       showTopBorder: item.showTopBorder,
+      backgroundColor: widget.backgroundColor,
     );
   }
 }
