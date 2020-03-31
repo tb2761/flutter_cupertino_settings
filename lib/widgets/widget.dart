@@ -55,7 +55,7 @@ class CSWidget extends StatelessWidget {
           top: showTopBorder
               ? BorderSide(
                   color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-                  width: 0.75,
+                  width: CS_BORDER_WIDTH,
                 )
               : BorderSide.none,
         ),
@@ -72,7 +72,7 @@ class CSWidget extends StatelessWidget {
           border: Border(
             bottom: BorderSide(
               color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-              width: 0.75,
+              width: CS_BORDER_WIDTH,
             ),
           ),
         ),
