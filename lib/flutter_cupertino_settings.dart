@@ -50,10 +50,12 @@ TextStyle basicTextStyle(BuildContext context) {
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
+  final ScrollController controller;
 
   const CupertinoSettings({
     @required this.items,
     this.shrinkWrap = false,
+    this.controller,
   });
 
   @override
@@ -64,6 +66,7 @@ class CupertinoSettings extends StatelessWidget {
         bottom: false,
         child: shrinkWrap
             ? ListView.builder(
+                controller: controller,
                 shrinkWrap: shrinkWrap,
                 itemCount: items.length,
                 itemBuilder: (BuildContext context, int index) => items[index],
@@ -72,6 +75,7 @@ class CupertinoSettings extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: ListView.builder(
+                      controller: controller,
                       shrinkWrap: shrinkWrap,
                       itemCount: items.length,
                       itemBuilder: (BuildContext context, int index) =>
