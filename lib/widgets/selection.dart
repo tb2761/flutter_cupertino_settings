@@ -12,7 +12,7 @@ part of flutter_cupertino_settings;
 ///
 /// onSelected(1)
 
-class CSSelection<T> extends StatefulWidget {
+class CSSelection<T> extends StatelessWidget {
   final List<CSSelectionItem<T>> items;
   final void Function(T selected) onSelected;
   final T currentSelection;
@@ -20,32 +20,12 @@ class CSSelection<T> extends StatefulWidget {
   final Color backgroundColor;
 
   const CSSelection({
-    this.items,
-    this.onSelected,
-    this.currentSelection,
+    @required this.items,
+    @required this.onSelected,
+    @required this.currentSelection,
     this.fontSize,
     this.backgroundColor,
   });
-
-  @override
-  State<StatefulWidget> createState() => CSSelectionState<T>(
-        items,
-        currentSelection ?? items.first.value,
-        onSelected,
-      );
-}
-
-/// [State] for [CSSelection]
-class CSSelectionState<T> extends State<CSSelection> {
-  T currentSelection;
-  final void Function(T selected) onSelected;
-  final List<CSSelectionItem<T>> items;
-
-  CSSelectionState(
-    this.items,
-    this.currentSelection,
-    this.onSelected,
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +40,9 @@ class CSSelectionState<T> extends State<CSSelection> {
       CupertinoButton(
         onPressed: () {
           if (item.value != currentSelection) {
-            setState(() => currentSelection = item.value);
+            HapticFeedback.selectionClick();
+            onSelected(item.value);
           }
-          HapticFeedback.selectionClick();
-          onSelected(item.value);
         },
         pressedOpacity: 1.0,
         padding: const EdgeInsets.fromLTRB(4, 1, 2, 1),
@@ -75,7 +54,7 @@ class CSSelectionState<T> extends State<CSSelection> {
                 item.text,
                 style: TextStyle(
                   color: CupertinoColors.label.resolveFrom(context),
-                  fontSize: widget.fontSize ?? CS_TITLE_FONT_SIZE,
+                  fontSize: fontSize ?? CS_TITLE_FONT_SIZE,
                 ),
               ),
             ),
@@ -91,7 +70,7 @@ class CSSelectionState<T> extends State<CSSelection> {
       ),
       addPaddingToBorder: items.last != item,
       showTopBorder: item.showTopBorder,
-      backgroundColor: widget.backgroundColor,
+      backgroundColor: backgroundColor,
     );
   }
 }
@@ -105,5 +84,5 @@ class CSSelectionItem<T> {
     this.value,
     this.text,
     this.showTopBorder = false,
-  });
+  }) : assert(value != null);
 }
