@@ -4,8 +4,13 @@ part of flutter_cupertino_settings;
 /// extends [CSWidget]
 /// Provides the correct paddings and text properties
 class CSControl extends CSWidget {
+  /// The widget displayed at the left side of the widget.
   final Widget nameWidget;
+
+  /// The widget displayed at the right side of the widget.
   final Widget contentWidget;
+
+  /// The fontsize applied to the children.
   final double fontSize;
 
   CSControl({
@@ -14,8 +19,9 @@ class CSControl extends CSWidget {
     CSWidgetStyle style,
     this.fontSize,
     bool addPaddingToBorder,
-    bool showTopBorder,
     Color backgroundColor,
+    BorderSide topBorder,
+    BorderSide bottomBorder,
   }) : super(
           _ControlWidget(
             fontSize: fontSize ?? CS_TITLE_FONT_SIZE,
@@ -24,8 +30,9 @@ class CSControl extends CSWidget {
           ),
           style: style ?? CS_DEFAULT_STYLE,
           addPaddingToBorder: addPaddingToBorder ?? true,
-          showTopBorder: showTopBorder ?? false,
           backgroundColor: backgroundColor,
+          topBorder: topBorder,
+          bottomBorder: bottomBorder,
         );
 }
 

@@ -7,8 +7,9 @@ class CSSecret extends StatefulWidget {
   final double fontSize;
   final CSWidgetStyle style;
   final bool addPaddingToBorder;
-  final bool showTopBorder;
   final Color backgroundColor;
+  final BorderSide topBorder;
+  final BorderSide bottomBorder;
 
   const CSSecret(
     this.text,
@@ -16,8 +17,9 @@ class CSSecret extends StatefulWidget {
     this.style,
     this.fontSize,
     this.addPaddingToBorder,
-    this.showTopBorder,
     this.backgroundColor,
+    this.topBorder,
+    this.bottomBorder,
   });
 
   @override
@@ -42,10 +44,7 @@ class _CSSecretState extends State<CSSecret> {
             Row(
               children: <Widget>[
                 Text(
-                  _show
-                      ? widget.secret
-                      : RenderEditable.obscuringCharacter *
-                          widget.secret.length,
+                  _show ? widget.secret : '•' * widget.secret.length,
                 ),
                 CupertinoButton(
                   child: Icon(
@@ -61,8 +60,9 @@ class _CSSecretState extends State<CSSecret> {
       ),
       style: widget.style,
       addPaddingToBorder: widget.addPaddingToBorder ?? true,
-      showTopBorder: widget.showTopBorder,
       backgroundColor: widget.backgroundColor,
+      topBorder: widget.topBorder,
+      bottomBorder: widget.bottomBorder
     );
   }
 }
