@@ -2,9 +2,13 @@ part of flutter_cupertino_settings;
 
 /// Provides a button for navigation
 class CSLink extends StatelessWidget {
+  ///
   final bool addPaddingToBorder;
-  final bool showTopBorder;
+
+  /// The fontsize for the `title`.
   final double titleFontSize;
+
+  /// The fontsize for the `subtitle`.
   final double subTitleFontSize;
   final String title;
   final String subtitle;
@@ -14,6 +18,8 @@ class CSLink extends StatelessWidget {
   final VoidCallback onPressed;
   final CSWidgetStyle style;
   final CellType cellType;
+  final BorderSide topBorder;
+  final BorderSide bottomBorder;
 
   const CSLink({
     this.title,
@@ -24,10 +30,11 @@ class CSLink extends StatelessWidget {
     this.titleFontSize,
     this.subTitleFontSize,
     this.addPaddingToBorder,
-    this.showTopBorder,
     this.trailing,
     this.cellType = CellType.defaultStyle,
     this.backgroundColor,
+    this.topBorder,
+    this.bottomBorder,
   });
 
   @override
@@ -106,8 +113,9 @@ class CSLink extends StatelessWidget {
       ),
       style: style ?? CS_DEFAULT_STYLE,
       addPaddingToBorder: addPaddingToBorder ?? true,
-      showTopBorder: showTopBorder ?? false,
       backgroundColor: backgroundColor,
+      topBorder: topBorder,
+      bottomBorder: bottomBorder,
     );
   }
 }

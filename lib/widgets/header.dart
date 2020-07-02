@@ -4,8 +4,12 @@ part of flutter_cupertino_settings;
 /// The [title] attribute is optional.
 class CSHeader extends StatelessWidget {
   final String title;
+  final BorderSide bottomBorder;
 
-  const CSHeader(this.title);
+  const CSHeader(
+    this.title, {
+    this.bottomBorder,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +18,11 @@ class CSHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
         border: Border(
-          bottom: BorderSide(
-            color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-            width: CS_BORDER_WIDTH,
-          ),
+          bottom: bottomBorder ??
+              BorderSide(
+                color: CupertinoColors.opaqueSeparator.resolveFrom(context),
+                width: CS_BORDER_WIDTH,
+              ),
         ),
       ),
       child: Text(

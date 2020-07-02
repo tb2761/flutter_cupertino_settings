@@ -6,12 +6,14 @@ part of flutter_cupertino_settings;
 /// The optional [style] attribute allows to specify a style (e.g. an Icon)
 class CSWidget extends StatelessWidget {
   final AlignmentGeometry alignment;
-  
+
   /// Default: false
   final bool addPaddingToBorder;
-  
-  /// Default: false
-  final bool showTopBorder;
+
+  final BorderSide topBorder;
+
+  /// Default: `BorderSide.none`
+  final BorderSide bottomBorder;
 
   /// Default: CupertinoColors.secondarySystemGroupedBackground
   final Color backgroundColor;
@@ -25,8 +27,9 @@ class CSWidget extends StatelessWidget {
     this.height = CS_ITEM_HEIGHT,
     this.style = CS_DEFAULT_STYLE,
     this.addPaddingToBorder,
-    this.showTopBorder,
     this.backgroundColor,
+    this.topBorder,
+    this.bottomBorder,
   });
 
   @override
@@ -58,12 +61,12 @@ class CSWidget extends StatelessWidget {
             CupertinoColors.secondarySystemGroupedBackground
                 .resolveFrom(context),
         border: Border(
-          top: (showTopBorder ?? false)
-              ? BorderSide(
-                  color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-                  width: CS_BORDER_WIDTH,
-                )
-              : BorderSide.none,
+          top: topBorder ??
+              BorderSide(
+                color: CupertinoColors.opaqueSeparator.resolveFrom(context),
+                width: CS_BORDER_WIDTH,
+              ),
+          bottom: bottomBorder ?? BorderSide.none,
         ),
       ),
       constraints: const BoxConstraints(minHeight: 42),
@@ -94,5 +97,3 @@ class CSWidgetStyle {
 
   const CSWidgetStyle({this.icon});
 }
-
-enum ItemType { single, list, listLast }
