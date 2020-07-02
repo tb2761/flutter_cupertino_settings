@@ -39,11 +39,11 @@ typedef void SelectionCallback(int selected);
 
 TextStyle basicTextStyle(BuildContext context) {
   if (kIsWeb) {
-    return Theme.of(context).textTheme.subhead;
+    return Theme.of(context).textTheme.subtitle1;
   } else if (Platform.isIOS || Platform.isMacOS) {
     return CupertinoTheme.of(context).textTheme.textStyle;
   } else {
-    return Theme.of(context).textTheme.subhead;
+    return Theme.of(context).textTheme.subtitle1;
   }
 }
 

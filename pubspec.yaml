@@ -8,7 +8,7 @@ homepage: https://github.com/matthinc/flutter_cupertino_settings
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
-  flutter: ">=1.12.13-hotfix.5 <2.0.0"
+  flutter: ">=1.17.0 <2.0.0"
 
 dependencies:
   flutter:
