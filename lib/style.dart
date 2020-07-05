@@ -29,7 +29,7 @@ class CSWidgetStyle with DiagnosticableMixin {
   });
 
   factory CSWidgetStyle.fallback(BuildContext context) => CSWidgetStyle(
-        addPaddingToBorder: false,
+        addPaddingToBorder: true,
         backgroundColor: CupertinoColors.secondarySystemGroupedBackground
             .resolveFrom(context),
         topBorder: BorderSide.none,
