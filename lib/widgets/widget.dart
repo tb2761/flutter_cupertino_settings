@@ -10,9 +10,10 @@ class CSWidget extends StatelessWidget {
   /// Default: false
   final bool addPaddingToBorder;
 
+  /// Default: `BorderSide.none`
   final BorderSide topBorder;
 
-  /// Default: `BorderSide.none`
+  /// Default: `BorderSide(color: CupertinoColors.opaqueSeparator.resolveFrom(context), width: CS_BORDER_WIDTH)`
   final BorderSide bottomBorder;
 
   /// Default: CupertinoColors.secondarySystemGroupedBackground
@@ -61,12 +62,7 @@ class CSWidget extends StatelessWidget {
             CupertinoColors.secondarySystemGroupedBackground
                 .resolveFrom(context),
         border: Border(
-          top: topBorder ??
-              BorderSide(
-                color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-                width: CS_BORDER_WIDTH,
-              ),
-          bottom: bottomBorder ?? BorderSide.none,
+          top: topBorder ?? BorderSide.none,
         ),
       ),
       constraints: const BoxConstraints(minHeight: 42),
@@ -79,10 +75,11 @@ class CSWidget extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           border: Border(
-            bottom: BorderSide(
-              color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-              width: CS_BORDER_WIDTH,
-            ),
+            bottom: bottomBorder ??
+                BorderSide(
+                  color: CupertinoColors.opaqueSeparator.resolveFrom(context),
+                  width: CS_BORDER_WIDTH,
+                ),
           ),
         ),
         child: child,
