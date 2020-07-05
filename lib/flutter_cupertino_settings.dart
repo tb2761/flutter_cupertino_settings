@@ -8,16 +8,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
+part 'style.dart';
 part 'widgets/button.dart';
 part 'widgets/control.dart';
 part 'widgets/description.dart';
 part 'widgets/header.dart';
 part 'widgets/link.dart';
-part 'widgets/link_group.dart';
 part 'widgets/secret.dart';
 part 'widgets/selection.dart';
 part 'widgets/spacer.dart';
 part 'widgets/widget.dart';
+part 'widgets/widget_group.dart';
+part 'widgets/widget_theme.dart';
 
 const double CS_ITEM_HEIGHT = 50.0;
 const EdgeInsets CS_ITEM_PADDING =
@@ -31,7 +33,6 @@ const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(
   right: 10.0,
   left: 4.0,
 );
-const CSWidgetStyle CS_DEFAULT_STYLE = CSWidgetStyle();
 const double CS_CHECK_SIZE = 28.0;
 const double CS_BORDER_WIDTH = 0.75;
 
@@ -61,30 +62,35 @@ class CupertinoSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
-      child: SafeArea(
-        bottom: false,
-        child: shrinkWrap
-            ? ListView.builder(
-                controller: controller,
-                shrinkWrap: shrinkWrap,
-                itemCount: items.length,
-                itemBuilder: (BuildContext context, int index) => items[index],
-              )
-            : Column(
-                children: <Widget>[
-                  Expanded(
-                    child: ListView.builder(
-                      controller: controller,
-                      shrinkWrap: shrinkWrap,
-                      itemCount: items.length,
-                      itemBuilder: (BuildContext context, int index) =>
-                          items[index],
+    return DefaultCSWidgetTheme(
+      height: CS_ITEM_HEIGHT,
+      style: CSWidgetStyle.fallback(context),
+      child: Container(
+        color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
+        child: SafeArea(
+          bottom: false,
+          child: shrinkWrap
+              ? ListView.builder(
+                  controller: controller,
+                  shrinkWrap: shrinkWrap,
+                  itemCount: items.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      items[index],
+                )
+              : Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: ListView.builder(
+                        controller: controller,
+                        shrinkWrap: shrinkWrap,
+                        itemCount: items.length,
+                        itemBuilder: (BuildContext context, int index) =>
+                            items[index],
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+        ),
       ),
     );
   }

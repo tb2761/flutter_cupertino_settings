@@ -6,20 +6,12 @@ class CSSecret extends StatefulWidget {
   final String secret;
   final double fontSize;
   final CSWidgetStyle style;
-  final bool addPaddingToBorder;
-  final Color backgroundColor;
-  final BorderSide topBorder;
-  final BorderSide bottomBorder;
 
   const CSSecret(
     this.text,
     this.secret, {
     this.style,
     this.fontSize,
-    this.addPaddingToBorder,
-    this.backgroundColor,
-    this.topBorder,
-    this.bottomBorder,
   });
 
   @override
@@ -58,11 +50,11 @@ class _CSSecretState extends State<CSSecret> {
           ],
         ),
       ),
-      style: widget.style,
-      addPaddingToBorder: widget.addPaddingToBorder ?? true,
-      backgroundColor: widget.backgroundColor,
-      topBorder: widget.topBorder,
-      bottomBorder: widget.bottomBorder
+      style: CSWidgetStyle(
+        addPaddingToBorder: true,
+      ).merge(
+        widget.style,
+      ),
     );
   }
 }

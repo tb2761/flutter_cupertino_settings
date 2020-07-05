@@ -1,7 +1,7 @@
 part of flutter_cupertino_settings;
 
-class CSLinkGroup extends StatelessWidget {
-  final List<CSLink> items;
+class CSWidgetGroup extends StatelessWidget {
+  final List<Widget> items;
 
   /// A widget displayed above the items. Typically a `CSHeader`.
   final Widget header;
@@ -15,7 +15,7 @@ class CSLinkGroup extends StatelessWidget {
   /// Default: `BorderRadius.circular(10)`
   final BorderRadius borderRadius;
 
-  CSLinkGroup({
+  CSWidgetGroup({
     Key key,
     this.items,
     this.header,
@@ -55,27 +55,42 @@ class CSLinkGroup extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                children: items.map<CSLink>((e) {
-                  return CSLink(
-                    addPaddingToBorder: e.addPaddingToBorder,
-                    backgroundColor: e.backgroundColor,
-                    cellType: e.cellType,
-                    detail: e.detail,
-                    onPressed: e.onPressed,
-                    style: e.style,
-                    subTitleFontSize: e.subTitleFontSize,
-                    subtitle: e.subtitle,
-                    title: e.title,
-                    titleFontSize: e.titleFontSize,
-                    trailing: e.trailing,
-                    bottomBorder:
-                        e == items.last ? BorderSide.none : e.bottomBorder,
-                    topBorder: e == items.first ? BorderSide.none : e.topBorder,
-                  );
+                children: items.map<Widget>((e) {
+                  if (items.length == 1) {
+                    return DefaultCSWidgetTheme.merge(
+                      child: e,
+                      style: CSWidgetStyle(
+                        topBorder: BorderSide.none,
+                        bottomBorder: BorderSide.none,
+                      ),
+                    );
+                  } else if (e == items.first) {
+                    return DefaultCSWidgetTheme.merge(
+                      child: e,
+                      style: CSWidgetStyle(
+                        topBorder: BorderSide.none,
+                      ),
+                    );
+                  } else if (e == items.last) {
+                    return DefaultCSWidgetTheme.merge(
+                      child: e,
+                      style: CSWidgetStyle(
+                        bottomBorder: BorderSide.none,
+                      ),
+                    );
+                  } else {
+                    return e;
+                  }
                 }).toList(),
               ),
             ),
-            if (description != null) description,
+            if (description != null)
+              DefaultCSWidgetTheme.merge(
+                child: description,
+                style: CSWidgetStyle(
+                  topBorder: BorderSide.none,
+                ),
+              ),
           ],
         ),
       ),

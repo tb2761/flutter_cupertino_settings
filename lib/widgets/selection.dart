@@ -14,6 +14,7 @@ part of flutter_cupertino_settings;
 
 class CSSelection<T> extends StatelessWidget {
   final List<CSSelectionItem<T>> items;
+
   /// The callback that is called, when a selections is tapped.
   final void Function(T selected) onSelected;
   final T currentSelection;
@@ -21,15 +22,11 @@ class CSSelection<T> extends StatelessWidget {
   /// The fontsize applied to each selection item text.
   final double fontSize;
 
-  /// The color applied to every selection item.
-  final Color backgroundColor;
-
   const CSSelection({
     @required this.items,
     @required this.onSelected,
     @required this.currentSelection,
     this.fontSize,
-    this.backgroundColor,
   });
 
   @override
@@ -73,10 +70,11 @@ class CSSelection<T> extends StatelessWidget {
           ],
         ),
       ),
-      addPaddingToBorder: items.last != item,
-      backgroundColor: backgroundColor,
-      topBorder: item.topBorder,
-      bottomBorder: item.bottomBorder,
+      style: CSWidgetStyle(
+        addPaddingToBorder: items.last != item,
+        topBorder: item.topBorder,
+        bottomBorder: item.bottomBorder,
+      ),
     );
   }
 }

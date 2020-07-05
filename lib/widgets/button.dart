@@ -32,10 +32,6 @@ class CSButton extends CSWidget {
     @required this.buttonType,
     this.fontSize,
     CSWidgetStyle style,
-    Color backgroundColor,
-    bool addPaddingToBorder,
-    BorderSide topBorder,
-    BorderSide bottomBorder,
   })  : assert(child != null),
         super(
           Flex(
@@ -59,11 +55,7 @@ class CSButton extends CSWidget {
               ),
             ],
           ),
-          style: style ?? CS_DEFAULT_STYLE,
-          backgroundColor: backgroundColor,
-          addPaddingToBorder: addPaddingToBorder,
-          topBorder: topBorder,
-          bottomBorder: bottomBorder,
+          style: style,
         );
 }
 
