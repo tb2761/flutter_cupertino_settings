@@ -13,6 +13,7 @@ part 'widgets/control.dart';
 part 'widgets/description.dart';
 part 'widgets/header.dart';
 part 'widgets/link.dart';
+part 'widgets/link_group.dart';
 part 'widgets/secret.dart';
 part 'widgets/selection.dart';
 part 'widgets/spacer.dart';
