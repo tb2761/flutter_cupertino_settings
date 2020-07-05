@@ -33,10 +33,7 @@ class CSWidgetStyle with DiagnosticableMixin {
         backgroundColor: CupertinoColors.secondarySystemGroupedBackground
             .resolveFrom(context),
         topBorder: BorderSide.none,
-        bottomBorder: BorderSide(
-          color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-          width: CS_BORDER_WIDTH,
-        ),
+        bottomBorder: kCupertinoBorderSide(context),
       );
 
   CSWidgetStyle merge(CSWidgetStyle other) {

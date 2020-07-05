@@ -18,11 +18,7 @@ class CSHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
         border: Border(
-          bottom: bottomBorder ??
-              BorderSide(
-                color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-                width: CS_BORDER_WIDTH,
-              ),
+          bottom: bottomBorder ?? kCupertinoBorderSide(context),
         ),
       ),
       child: Text(

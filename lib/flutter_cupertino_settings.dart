@@ -49,6 +49,11 @@ TextStyle basicTextStyle(BuildContext context) {
   }
 }
 
+BorderSide kCupertinoBorderSide(BuildContext context) => BorderSide(
+      color: CupertinoColors.opaqueSeparator.resolveFrom(context),
+      width: CS_BORDER_WIDTH,
+    );
+
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
