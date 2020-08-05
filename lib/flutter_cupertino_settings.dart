@@ -58,11 +58,21 @@ class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
   final ScrollController controller;
+  final ScrollPhysics physics;
+  final bool primary;
+  final EdgeInsetsGeometry padding;
+  final bool reverse;
+  final Axis scrollDirection;
 
   const CupertinoSettings({
     @required this.items,
     this.shrinkWrap = false,
     this.controller,
+    this.physics,
+    this.primary,
+    this.padding,
+    this.reverse,
+    this.scrollDirection,
   });
 
   @override
@@ -81,6 +91,11 @@ class CupertinoSettings extends StatelessWidget {
                   itemCount: items.length,
                   itemBuilder: (BuildContext context, int index) =>
                       items[index],
+                  padding: padding,
+                  primary: primary,
+                  physics: physics,
+                  reverse: reverse,
+                  scrollDirection: scrollDirection,
                 )
               : Column(
                   children: <Widget>[
@@ -91,6 +106,11 @@ class CupertinoSettings extends StatelessWidget {
                         itemCount: items.length,
                         itemBuilder: (BuildContext context, int index) =>
                             items[index],
+                        padding: padding,
+                        primary: primary,
+                        physics: physics,
+                        reverse: reverse,
+                        scrollDirection: scrollDirection,
                       ),
                     ),
                   ],
