@@ -2,7 +2,7 @@ part of flutter_cupertino_settings;
 
 /// Defines style attributes that can be applied to every [CSWidget]
 @immutable
-class CSWidgetStyle with DiagnosticableMixin {
+class CSWidgetStyle with Diagnosticable {
   final Icon icon;
 
   final AlignmentGeometry alignment;
@@ -35,6 +35,8 @@ class CSWidgetStyle with DiagnosticableMixin {
         topBorder: BorderSide.none,
         bottomBorder: kCupertinoBorderSide(context),
       );
+
+  // TODO add factory constructor for first, middle, last
 
   CSWidgetStyle merge(CSWidgetStyle other) {
     if (other == null) return this;
