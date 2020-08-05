@@ -71,8 +71,8 @@ class CupertinoSettings extends StatelessWidget {
     this.physics,
     this.primary,
     this.padding,
-    this.reverse,
-    this.scrollDirection,
+    this.reverse = false,
+    this.scrollDirection = Axis.vertical,
   });
 
   @override
@@ -94,8 +94,8 @@ class CupertinoSettings extends StatelessWidget {
                   padding: padding,
                   primary: primary,
                   physics: physics,
-                  reverse: reverse,
-                  scrollDirection: scrollDirection,
+                  reverse: reverse ?? false,
+                  scrollDirection: scrollDirection ?? Axis.vertical,
                 )
               : Column(
                   children: <Widget>[
@@ -109,8 +109,8 @@ class CupertinoSettings extends StatelessWidget {
                         padding: padding,
                         primary: primary,
                         physics: physics,
-                        reverse: reverse,
-                        scrollDirection: scrollDirection,
+                        reverse: reverse ?? false,
+                        scrollDirection: scrollDirection ?? Axis.vertical,
                       ),
                     ),
                   ],
