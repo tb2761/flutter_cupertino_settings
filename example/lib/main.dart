@@ -35,100 +35,57 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: CupertinoSettings(
         items: <Widget>[
-          CSWidgetGroup(
-            header: const CSHeader('Brightness'),
-            items: <Widget>[
-              CSWidget(
-                CupertinoSlider(
-                  value: _slider,
-                  onChanged: (double value) => setState(() => _slider = value),
-                ),
-                style: CSWidgetStyle(
-                  icon: Icon(FontAwesomeIcons.sun),
-                  addPaddingToBorder: true,
-                ),
-              ),
-              CSControl(
-                nameWidget: Text('Auto brightness'),
-                contentWidget: CupertinoSwitch(
-                  value: _switch,
-                  onChanged: (bool value) => setState(() => _switch = value),
-                ),
-                style: CSWidgetStyle(
-                  icon: Icon(FontAwesomeIcons.sun),
-                  addPaddingToBorder: false,
-                ),
-              ),
-            ],
-          ),
-          CSWidgetGroup(
-            header: const CSHeader('Selection'),
-            items: <Widget>[
-              CSSelection<int>(
-                items: const <CSSelectionItem<int>>[
-                  CSSelectionItem<int>(text: 'Day mode', value: 0),
-                  CSSelectionItem<int>(text: 'Night mode', value: 1),
-                ],
-                onSelected: (value) => setState(() => _index = value),
-                currentSelection: _index,
-              ),
-            ],
-            description: const CSDescription(
-              'Using Night mode extends battery life on devices with OLED display',
+          const CSHeader('Brightness'),
+          CSWidget(
+            CupertinoSlider(
+              value: _slider,
+              onChanged: (double value) => setState(() => _slider = value),
             ),
+            style: CSWidgetStyle(
+              icon: Icon(FontAwesomeIcons.sun),
+            ),
+            addPaddingToBorder: true,
           ),
-          CSWidgetGroup(
-            header: const CSHeader(""),
-            items: <Widget>[
-              CSControl(
-                nameWidget: Text('Loading...'),
-                contentWidget: const CupertinoActivityIndicator(),
-              ),
-              CSButton(
-                child: Text("Licenses"),
-                pressed: () {
-                  print("It works!");
-                },
-                buttonType: CSButtonType.DEFAULT,
-              ),
-            ],
+          CSControl(
+            nameWidget: Text('Auto brightness'),
+            contentWidget: CupertinoSwitch(
+              value: _switch,
+              onChanged: (bool value) => setState(() => _switch = value),
+            ),
+            style: CSWidgetStyle(
+              icon: Icon(FontAwesomeIcons.sun),
+            ),
+            addPaddingToBorder: false,
           ),
-          CSWidgetGroup(
-            header: const CSHeader("Warning Area"),
-            items: <Widget>[
-              CSButton(
-                child: Text("Delete all data"),
-                pressed: () {},
-                buttonType: CSButtonType.DESTRUCTIVE,
-              ),
+          const CSHeader('Selection'),
+          CSSelection<int>(
+            items: const <CSSelectionItem<int>>[
+              CSSelectionItem<int>(text: 'Day mode', value: 0),
+              CSSelectionItem<int>(text: 'Night mode', value: 1),
             ],
+            onSelected: (value) => setState(() => _index = value),
+            currentSelection: _index,
           ),
-          CSWidgetGroup(
-            header: CSHeader('Header'),
-            description: CSDescription('Test description'),
-            items: <CSLink>[
-              CSLink(
-                title: 'Test',
-              ),
-              CSLink(
-                title: 'Test',
-                subtitle: 'Subtitle',
-                cellType: CellType.subtitleStyle,
-              ),
-              CSLink(
-                title: 'Test',
-                subtitle: 'Subtitle',
-                detail: 'Detail',
-                cellType: CellType.subtitleDetailStyle,
-              ),
-              CSLink(
-                title: 'Test',
-                subtitle: 'Subtitle',
-                detail: 'Detail',
-                cellType: CellType.subtitleDetailStyle,
-                onPressed: () {},
-              ),
-            ],
+          const CSDescription(
+            'Using Night mode extends battery life on devices with OLED display',
+          ),
+          const CSHeader(""),
+          CSControl(
+            nameWidget: Text('Loading...'),
+            contentWidget: const CupertinoActivityIndicator(),
+          ),
+          CSButton(
+            child: Text("Licenses"),
+            pressed: () {
+              print("It works!");
+            },
+            buttonType: CSButtonType.DEFAULT,
+          ),
+          const CSHeader(""),
+          CSButton(
+            child: Text("Delete all data"),
+            pressed: () {},
+            buttonType: CSButtonType.DESTRUCTIVE,
           ),
         ],
       ),

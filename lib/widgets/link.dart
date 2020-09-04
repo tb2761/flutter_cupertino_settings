@@ -95,9 +95,9 @@ class CSLink extends StatelessWidget {
                         CupertinoIcons.right_chevron,
                         color:
                             CupertinoColors.secondaryLabel.resolveFrom(context),
-                        size: 14,
+                        size: 20,
                       )
-                    : const SizedBox()),
+                    : Container()),
           ],
         ),
       ),
