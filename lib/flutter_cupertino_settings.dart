@@ -33,7 +33,7 @@ const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(
   right: 10.0,
   left: 4.0,
 );
-const double CS_CHECK_SIZE = 28.0;
+const double CS_CHECK_SIZE = 18.0;
 const double CS_BORDER_WIDTH = 0.75;
 
 /// Event for [CSSelection]
