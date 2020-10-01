@@ -41,7 +41,6 @@ class _CSSecretState extends State<CSSecret> {
                 CupertinoButton(
                   child: Icon(
                     CupertinoIcons.eye_solid,
-                    size: CS_CHECK_SIZE,
                   ),
                   onPressed: () => setState(() => _show = !_show),
                 ),

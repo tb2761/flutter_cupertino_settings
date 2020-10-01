@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_cupertino_settings/flutter_cupertino_settings.dart';
 
 void main() => runApp(MyApp());
@@ -42,9 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
               onChanged: (double value) => setState(() => _slider = value),
             ),
             style: CSWidgetStyle(
-              icon: Icon(FontAwesomeIcons.sun),
+              icon: Icon(CupertinoIcons.sun_max),
+              addPaddingToBorder: true,
             ),
-            addPaddingToBorder: true,
           ),
           CSControl(
             nameWidget: Text('Auto brightness'),
@@ -53,9 +52,9 @@ class _HomeScreenState extends State<HomeScreen> {
               onChanged: (bool value) => setState(() => _switch = value),
             ),
             style: CSWidgetStyle(
-              icon: Icon(FontAwesomeIcons.sun),
+              icon: Icon(CupertinoIcons.sun_max),
+              addPaddingToBorder: false,
             ),
-            addPaddingToBorder: false,
           ),
           const CSHeader('Selection'),
           CSSelection<int>(
