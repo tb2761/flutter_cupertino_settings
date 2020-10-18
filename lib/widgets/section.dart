@@ -1,6 +1,6 @@
 part of flutter_cupertino_settings;
 
-class CSWidgetGroup extends StatelessWidget {
+class CSSection extends StatelessWidget {
   final List<Widget> items;
 
   /// A widget displayed above the items. Typically a `CSHeader`.
@@ -15,7 +15,7 @@ class CSWidgetGroup extends StatelessWidget {
   /// Default: `BorderRadius.circular(10)`
   final BorderRadius borderRadius;
 
-  CSWidgetGroup({
+  CSSection({
     Key key,
     this.items,
     this.header,

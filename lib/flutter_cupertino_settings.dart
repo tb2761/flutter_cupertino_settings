@@ -17,8 +17,8 @@ part 'widgets/link.dart';
 part 'widgets/secret.dart';
 part 'widgets/selection.dart';
 part 'widgets/spacer.dart';
+part 'widgets/section.dart';
 part 'widgets/widget.dart';
-part 'widgets/widget_group.dart';
 part 'widgets/widget_theme.dart';
 
 const double CS_ITEM_HEIGHT = 50.0;
