@@ -72,7 +72,7 @@ class CSSelection<T> extends StatelessWidget {
       style: CSWidgetStyle(
         addPaddingToBorder: items.last != item,
         topBorder: item.topBorder,
-        bottomBorder: item.bottomBorder,
+        bottomBorder: item.bottomBorder ?? kCupertinoBorderSide(context),
       ),
     );
   }
