@@ -5,10 +5,12 @@ part of flutter_cupertino_settings;
 class CSHeader extends StatelessWidget {
   final String title;
   final BorderSide bottomBorder;
+  final double fontSize;
 
   const CSHeader(
     this.title, {
     this.bottomBorder,
+    this.fontSize,
   });
 
   @override
@@ -25,7 +27,7 @@ class CSHeader extends StatelessWidget {
         title.toUpperCase(),
         style: basicTextStyle(context).copyWith(
           color: CupertinoColors.secondaryLabel.resolveFrom(context),
-          fontSize: CS_HEADER_FONT_SIZE,
+          fontSize: this.fontSize ?? CS_HEADER_FONT_SIZE,
         ),
       ),
     );
