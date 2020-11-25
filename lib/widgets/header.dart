@@ -25,7 +25,7 @@ class CSHeader extends StatelessWidget {
         title.toUpperCase(),
         style: basicTextStyle(context).copyWith(
           color: CupertinoColors.secondaryLabel.resolveFrom(context),
-          fontSize: CS_HEADER_FONT_SIZE,
+          fontSize: kCSHeaderFontsize,
         ),
       ),
     );

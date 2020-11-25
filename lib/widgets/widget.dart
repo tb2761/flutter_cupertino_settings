@@ -11,28 +11,25 @@ class CSWidget extends StatelessWidget {
 
   const CSWidget(
     this.widget, {
-    this.height = CS_ITEM_HEIGHT,
+    this.height = kCSItemHeight,
     this.style,
   });
 
   @override
   Widget build(BuildContext context) {
-    final DefaultCSWidgetTheme defaultCSWidgetTheme =
-        DefaultCSWidgetTheme.of(context);
-
-    final CSWidgetStyle effectiveWidgetStyle =
-        defaultCSWidgetTheme.style.merge(style);
+    final defaultCSWidgetTheme = DefaultCSWidgetTheme.of(context);
+    final effectiveWidgetStyle = defaultCSWidgetTheme.style.merge(style);
 
     Widget child;
     EdgeInsets padding;
 
     //style.icon
     if (effectiveWidgetStyle.icon != null) {
-      padding = CS_ICON_PADDING;
+      padding = kCSIconPadding;
       child = Row(
         children: <Widget>[
           Container(
-            padding: CS_ICON_PADDING,
+            padding: kCSIconPadding,
             child: effectiveWidgetStyle.icon,
           ),
           Expanded(child: widget)
@@ -40,7 +37,7 @@ class CSWidget extends StatelessWidget {
       );
     } else {
       child = widget;
-      padding = CS_ITEM_PADDING;
+      padding = kCSItemPadding;
     }
 
     return Container(

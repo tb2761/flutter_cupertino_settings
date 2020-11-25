@@ -46,7 +46,7 @@ class CSButton extends CSWidget {
                     child: DefaultTextStyle(
                       style: TextStyle(
                         color: (buttonType ?? CSButtonType.DEFAULT).color,
-                        fontSize: fontSize ?? CS_TITLE_FONT_SIZE,
+                        fontSize: fontSize ?? kCSTitleFontsize,
                       ),
                       child: child,
                     ),

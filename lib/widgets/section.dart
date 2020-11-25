@@ -17,7 +17,7 @@ class CSSection extends StatelessWidget {
 
   CSSection({
     Key key,
-    this.items,
+    @required this.items,
     this.header,
     this.description,
     this.padding,
@@ -38,7 +38,6 @@ class CSSection extends StatelessWidget {
             ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             if (header != null)
@@ -53,13 +52,12 @@ class CSSection extends StatelessWidget {
               borderRadius: borderRadius ?? BorderRadius.circular(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: items.map<Widget>((e) {
                   if (items.length == 1) {
                     return DefaultCSWidgetTheme.merge(
                       child: e,
-                      style: CSWidgetStyle(
+                      style: const CSWidgetStyle(
                         topBorder: BorderSide.none,
                         bottomBorder: BorderSide.none,
                       ),
@@ -67,14 +65,14 @@ class CSSection extends StatelessWidget {
                   } else if (e == items.first) {
                     return DefaultCSWidgetTheme.merge(
                       child: e,
-                      style: CSWidgetStyle(
+                      style: const CSWidgetStyle(
                         topBorder: BorderSide.none,
                       ),
                     );
                   } else if (e == items.last) {
                     return DefaultCSWidgetTheme.merge(
                       child: e,
-                      style: CSWidgetStyle(
+                      style: const CSWidgetStyle(
                         bottomBorder: BorderSide.none,
                       ),
                     );
@@ -87,7 +85,7 @@ class CSSection extends StatelessWidget {
             if (description != null)
               DefaultCSWidgetTheme.merge(
                 child: description,
-                style: CSWidgetStyle(
+                style: const CSWidgetStyle(
                   topBorder: BorderSide.none,
                 ),
               ),

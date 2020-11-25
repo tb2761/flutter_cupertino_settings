@@ -27,7 +27,7 @@ class _CSSecretState extends State<CSSecret> {
       DefaultTextStyle(
         style: basicTextStyle(context).copyWith(
           color: CupertinoColors.label.resolveFrom(context),
-          fontSize: widget.fontSize ?? CS_TITLE_FONT_SIZE,
+          fontSize: widget.fontSize ?? kCSTitleFontsize,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,17 +39,17 @@ class _CSSecretState extends State<CSSecret> {
                   _show ? widget.secret : '•' * widget.secret.length,
                 ),
                 CupertinoButton(
-                  child: Icon(
+                  onPressed: () => setState(() => _show = !_show),
+                  child: const Icon(
                     CupertinoIcons.eye_solid,
                   ),
-                  onPressed: () => setState(() => _show = !_show),
                 ),
               ],
             ),
           ],
         ),
       ),
-      style: CSWidgetStyle(
+      style: const CSWidgetStyle(
         addPaddingToBorder: true,
       ).merge(
         widget.style,

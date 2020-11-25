@@ -49,14 +49,13 @@ class CSSelection<T> extends StatelessWidget {
         pressedOpacity: 1.0,
         padding: const EdgeInsets.fromLTRB(4, 1, 2, 1),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
               child: Text(
                 item.text,
                 style: TextStyle(
                   color: CupertinoColors.label.resolveFrom(context),
-                  fontSize: fontSize ?? CS_TITLE_FONT_SIZE,
+                  fontSize: fontSize ?? kCSTitleFontsize,
                 ),
               ),
             ),
@@ -85,7 +84,7 @@ class CSSelectionItem<T> {
   final BorderSide bottomBorder;
 
   const CSSelectionItem({
-    this.value,
+    @required this.value,
     this.text,
     this.topBorder,
     this.bottomBorder,

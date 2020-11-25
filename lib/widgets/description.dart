@@ -19,7 +19,7 @@ class CSDescription extends StatelessWidget {
         description,
         style: basicTextStyle(context).copyWith(
           color: CupertinoColors.secondaryLabel.resolveFrom(context),
-          fontSize: CS_DESCRIPTION_FONT_SIZE,
+          fontSize: kCSDescriptionFontsize,
           height: 1.1,
         ),
       ),

@@ -4,7 +4,7 @@ class DefaultCSWidgetTheme extends InheritedTheme {
   final CSWidgetStyle style;
   final double height;
 
-  DefaultCSWidgetTheme({
+  const DefaultCSWidgetTheme({
     Key key,
     this.height,
     @required this.style,
@@ -21,7 +21,7 @@ class DefaultCSWidgetTheme extends InheritedTheme {
   /// This constructor creates a [DefaultCSWidgetTheme] that lacks a [child], which
   /// means the constructed value cannot be incorporated into the tree.
   DefaultCSWidgetTheme.fallback({Key key, BuildContext context})
-      : height = CS_ITEM_HEIGHT,
+      : height = kCSItemHeight,
         style = CSWidgetStyle.fallback(context),
         super(key: key, child: null);
 
@@ -67,8 +67,9 @@ class DefaultCSWidgetTheme extends InheritedTheme {
 
   @override
   Widget wrap(BuildContext context, Widget child) {
-    final DefaultCSWidgetTheme defaultCSWidgetTheme =
+    final defaultCSWidgetTheme =
         context.findAncestorWidgetOfExactType<DefaultCSWidgetTheme>();
+
     return identical(this, defaultCSWidgetTheme)
         ? child
         : DefaultCSWidgetTheme(

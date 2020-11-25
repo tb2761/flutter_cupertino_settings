@@ -21,22 +21,24 @@ part 'widgets/section.dart';
 part 'widgets/widget.dart';
 part 'widgets/widget_theme.dart';
 
-const double CS_ITEM_HEIGHT = 50.0;
-const EdgeInsets CS_ITEM_PADDING =
-    EdgeInsets.symmetric(horizontal: 10, vertical: 1);
-const double CS_TITLE_FONT_SIZE = 16.0;
-const double CS_SUBTITLE_FONT_SIZE = 11.0;
-const double CS_HEADER_FONT_SIZE = 14.0;
-const double CS_DESCRIPTION_FONT_SIZE = 13.0;
-const double CS_ITEM_NAME_SIZE = 15.0;
-const EdgeInsets CS_ICON_PADDING = EdgeInsets.only(
+const double kCSItemHeight = 50.0;
+const EdgeInsets kCSItemPadding = EdgeInsets.symmetric(
+  horizontal: 10,
+  vertical: 1,
+);
+const double kCSTitleFontsize = 16.0;
+const double kCSSubtitleFontsize = 11.0;
+const double kCSHeaderFontsize = 14.0;
+const double kCSDescriptionFontsize = 13.0;
+const double kCSItemNameSize = 15.0;
+const EdgeInsets kCSIconPadding = EdgeInsets.only(
   right: 10.0,
   left: 4.0,
 );
-const double CS_BORDER_WIDTH = 0.75;
+const double kCSBorderWidth = 0.75;
 
 /// Event for [CSSelection]
-typedef void SelectionCallback(int selected);
+typedef SelectionCallback = void Function(int selected);
 
 TextStyle basicTextStyle(BuildContext context) {
   if (kIsWeb) {
@@ -50,7 +52,7 @@ TextStyle basicTextStyle(BuildContext context) {
 
 BorderSide kCupertinoBorderSide(BuildContext context) => BorderSide(
       color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-      width: CS_BORDER_WIDTH,
+      width: kCSBorderWidth,
     );
 
 class CupertinoSettings extends StatelessWidget {
@@ -77,7 +79,7 @@ class CupertinoSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultCSWidgetTheme(
-      height: CS_ITEM_HEIGHT,
+      height: kCSItemHeight,
       style: CSWidgetStyle.fallback(context),
       child: Container(
         color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
@@ -88,8 +90,7 @@ class CupertinoSettings extends StatelessWidget {
                   controller: controller,
                   shrinkWrap: shrinkWrap,
                   itemCount: items.length,
-                  itemBuilder: (BuildContext context, int index) =>
-                      items[index],
+                  itemBuilder: (context, index) => items[index],
                   padding: padding,
                   primary: primary,
                   physics: physics,
@@ -103,8 +104,7 @@ class CupertinoSettings extends StatelessWidget {
                         controller: controller,
                         shrinkWrap: shrinkWrap,
                         itemCount: items.length,
-                        itemBuilder: (BuildContext context, int index) =>
-                            items[index],
+                        itemBuilder: (context, index) => items[index],
                         padding: padding,
                         primary: primary,
                         physics: physics,

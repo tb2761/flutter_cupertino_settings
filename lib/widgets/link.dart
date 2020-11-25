@@ -14,6 +14,7 @@ class CSLink extends StatelessWidget {
   final VoidCallback onPressed;
   final CSWidgetStyle style;
   final CellType cellType;
+  final int subtitleMaxLines;
 
   const CSLink({
     this.title,
@@ -25,6 +26,7 @@ class CSLink extends StatelessWidget {
     this.subTitleFontSize,
     this.trailing,
     this.cellType = CellType.defaultStyle,
+    this.subtitleMaxLines = 1,
   });
 
   @override
@@ -44,7 +46,6 @@ class CSLink extends StatelessWidget {
         onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
               child: Column(
@@ -56,24 +57,25 @@ class CSLink extends StatelessWidget {
                     title,
                     style: basicTextStyle(context).copyWith(
                       color: CupertinoColors.label.resolveFrom(context),
-                      fontSize: titleFontSize ?? CS_TITLE_FONT_SIZE,
+                      fontSize: titleFontSize ?? kCSTitleFontsize,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  if (showSubtitle) const SizedBox(height: 2),
-                  if (showSubtitle)
+                  if (showSubtitle) ...[
+                    const SizedBox(height: 2),
                     Text(
                       subtitle,
                       style: basicTextStyle(context).copyWith(
                         color:
                             CupertinoColors.secondaryLabel.resolveFrom(context),
-                        fontSize: subTitleFontSize ?? CS_SUBTITLE_FONT_SIZE,
+                        fontSize: subTitleFontSize ?? kCSSubtitleFontsize,
                         fontWeight: FontWeight.w400,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.clip,
+                      maxLines: subtitleMaxLines,
+                      overflow: TextOverflow.ellipsis,
                     ),
+                  ],
                 ],
               ),
             ),
@@ -89,15 +91,14 @@ class CSLink extends StatelessWidget {
               ),
               const SizedBox(width: 4),
             ],
-            trailing ??
-                (onPressed != null
-                    ? Icon(
-                        CupertinoIcons.right_chevron,
-                        color:
-                            CupertinoColors.secondaryLabel.resolveFrom(context),
-                        size: 20,
-                      )
-                    : Container()),
+            if (trailing != null)
+              trailing
+            else if (onPressed != null)
+              Icon(
+                CupertinoIcons.right_chevron,
+                color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                size: 20,
+              ),
           ],
         ),
       ),

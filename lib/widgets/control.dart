@@ -20,7 +20,7 @@ class CSControl extends CSWidget {
     this.fontSize,
   }) : super(
           _ControlWidget(
-            fontSize: fontSize ?? CS_TITLE_FONT_SIZE,
+            fontSize: fontSize ?? kCSTitleFontsize,
             contentWidget: contentWidget,
             nameWidget: nameWidget,
           ),
