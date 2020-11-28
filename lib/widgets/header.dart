@@ -15,15 +15,6 @@ class CSHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var effectiveTextStyle = basicTextStyle(context).copyWith(
-      color: CupertinoColors.secondaryLabel.resolveFrom(context),
-      fontSize: kCSHeaderFontsize,
-    );
-
-    if (style != null) {
-      effectiveTextStyle = effectiveTextStyle.merge(style!);
-    }
-
     return Container(
       padding: const EdgeInsets.only(left: 10.0, top: 30.0, bottom: 5.0),
       decoration: BoxDecoration(
@@ -34,7 +25,12 @@ class CSHeader extends StatelessWidget {
       ),
       child: Text(
         title.toUpperCase(),
-        style: effectiveTextStyle,
+        style: basicTextStyle(context)
+            .copyWith(
+              color: CupertinoColors.secondaryLabel.resolveFrom(context),
+              fontSize: kCSHeaderFontsize,
+            )
+            .merge(style),
       ),
     );
   }
