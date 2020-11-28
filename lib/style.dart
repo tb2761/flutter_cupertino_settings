@@ -37,7 +37,11 @@ class CSWidgetStyle with Diagnosticable {
 
   // TODO add factory constructor for first, middle, last
 
-  CSWidgetStyle merge(CSWidgetStyle other) {
+  CSWidgetStyle merge(CSWidgetStyle? other) {
+    if (other == null) {
+      return this;
+    }
+
     return copyWith(
       alignment: other.alignment,
       addPaddingToBorder: other.addPaddingToBorder,

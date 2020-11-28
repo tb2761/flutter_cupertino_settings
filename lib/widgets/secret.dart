@@ -23,16 +23,6 @@ class _CSSecretState extends State<CSSecret> {
 
   @override
   Widget build(BuildContext context) {
-    var effectiveWidgetStyle = const CSWidgetStyle(
-      addPaddingToBorder: true,
-    );
-
-    if (widget.style != null) {
-      effectiveWidgetStyle = effectiveWidgetStyle.merge(
-        widget.style!,
-      );
-    }
-
     return CSWidget(
       DefaultTextStyle(
         style: basicTextStyle(context).copyWith(
@@ -59,7 +49,9 @@ class _CSSecretState extends State<CSSecret> {
           ],
         ),
       ),
-      style: effectiveWidgetStyle,
+      style: const CSWidgetStyle(
+        addPaddingToBorder: true,
+      ).merge(widget.style),
     );
   }
 }

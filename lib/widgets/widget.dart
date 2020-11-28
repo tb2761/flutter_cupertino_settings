@@ -18,13 +18,7 @@ class CSWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultCSWidgetTheme = DefaultCSWidgetTheme.of(context);
-    CSWidgetStyle effectiveWidgetStyle;
-
-    if (style != null) {
-      effectiveWidgetStyle = defaultCSWidgetTheme.style.merge(style!);
-    } else {
-      effectiveWidgetStyle = defaultCSWidgetTheme.style;
-    }
+    final effectiveWidgetStyle = defaultCSWidgetTheme.style.merge(style);
 
     Widget child;
     EdgeInsets padding;
