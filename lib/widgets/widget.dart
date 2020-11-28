@@ -5,7 +5,7 @@ part of flutter_cupertino_settings;
 /// The optional [alignment] attribute allows to specify the aligment inside the container
 /// The optional [style] attribute allows to specify a style (e.g. an Icon)
 class CSWidget extends StatelessWidget {
-  final CSWidgetStyle style;
+  final CSWidgetStyle? style;
   final double height;
   final Widget widget;
 
@@ -18,7 +18,13 @@ class CSWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultCSWidgetTheme = DefaultCSWidgetTheme.of(context);
-    final effectiveWidgetStyle = defaultCSWidgetTheme.style.merge(style);
+    CSWidgetStyle effectiveWidgetStyle;
+
+    if (style != null) {
+      effectiveWidgetStyle = defaultCSWidgetTheme.style.merge(style!);
+    } else {
+      effectiveWidgetStyle = defaultCSWidgetTheme.style;
+    }
 
     Widget child;
     EdgeInsets padding;
@@ -58,7 +64,7 @@ class CSWidget extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           border: Border(
-            bottom: effectiveWidgetStyle.bottomBorder,
+            bottom: effectiveWidgetStyle.bottomBorder ?? BorderSide.none,
           ),
         ),
         child: child,

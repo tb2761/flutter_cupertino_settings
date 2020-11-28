@@ -3,9 +3,9 @@ part of flutter_cupertino_settings;
 /// Defines style attributes that can be applied to every [CSWidget]
 @immutable
 class CSWidgetStyle with Diagnosticable {
-  final Icon icon;
+  final Icon? icon;
 
-  final AlignmentGeometry alignment;
+  final AlignmentGeometry? alignment;
 
   /// Default: false
   final bool addPaddingToBorder;
@@ -14,15 +14,15 @@ class CSWidgetStyle with Diagnosticable {
   final BorderSide topBorder;
 
   /// Default: `BorderSide(color: CupertinoColors.opaqueSeparator.resolveFrom(context), width: CS_BORDER_WIDTH)`
-  final BorderSide bottomBorder;
+  final BorderSide? bottomBorder;
 
   /// Default: CupertinoColors.secondarySystemGroupedBackground
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   const CSWidgetStyle({
     this.alignment,
-    this.addPaddingToBorder,
-    this.topBorder,
+    this.addPaddingToBorder = false,
+    this.topBorder = BorderSide.none,
     this.bottomBorder,
     this.backgroundColor,
     this.icon,
@@ -32,15 +32,12 @@ class CSWidgetStyle with Diagnosticable {
         addPaddingToBorder: true,
         backgroundColor: CupertinoColors.secondarySystemGroupedBackground
             .resolveFrom(context),
-        topBorder: BorderSide.none,
         bottomBorder: kCupertinoBorderSide(context),
       );
 
   // TODO add factory constructor for first, middle, last
 
   CSWidgetStyle merge(CSWidgetStyle other) {
-    if (other == null) return this;
-
     return copyWith(
       alignment: other.alignment,
       addPaddingToBorder: other.addPaddingToBorder,
@@ -52,12 +49,12 @@ class CSWidgetStyle with Diagnosticable {
   }
 
   CSWidgetStyle copyWith({
-    Icon icon,
-    AlignmentGeometry alignment,
-    bool addPaddingToBorder,
-    BorderSide topBorder,
-    BorderSide bottomBorder,
-    Color backgroundColor,
+    Icon? icon,
+    AlignmentGeometry? alignment,
+    bool? addPaddingToBorder,
+    BorderSide? topBorder,
+    BorderSide? bottomBorder,
+    Color? backgroundColor,
   }) {
     return CSWidgetStyle(
       icon: icon ?? this.icon,
@@ -71,7 +68,12 @@ class CSWidgetStyle with Diagnosticable {
 
   @override
   String toStringShort() {
-    return 'CSWidgetStyle(icon: $icon, alignment: $alignment, addPaddingToBorder: $addPaddingToBorder, topBorder: $topBorder, bottomBorder: $bottomBorder, backgroundColor: $backgroundColor)';
+    return 'CSWidgetStyle(icon: $icon, '
+        'alignment: $alignment, '
+        'addPaddingToBorder: $addPaddingToBorder, '
+        'topBorder: $topBorder, '
+        'bottomBorder: $bottomBorder, '
+        'backgroundColor: $backgroundColor)';
   }
 
   @override

@@ -2,12 +2,12 @@ part of flutter_cupertino_settings;
 
 class CSDescription extends StatelessWidget {
   final String description;
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   const CSDescription(
     this.description, {
     this.backgroundColor,
-  }) : assert(description != null);
+  });
 
   @override
   Widget build(BuildContext context) {

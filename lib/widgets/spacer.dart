@@ -1,13 +1,13 @@
 part of flutter_cupertino_settings;
 
 class CSSpacer extends StatelessWidget {
-  final BorderSide bottomBorder;
+  final BorderSide? bottomBorder;
 
   /// Default: CupertinoColors.systemGroupedBackground
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   const CSSpacer({
-    Key key,
+    Key? key,
     this.bottomBorder,
     this.backgroundColor,
   }) : super(key: key);

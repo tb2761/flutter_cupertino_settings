@@ -4,26 +4,26 @@ class CSSection extends StatelessWidget {
   final List<Widget> items;
 
   /// A widget displayed above the items. Typically a `CSHeader`.
-  final Widget header;
+  final Widget? header;
 
   /// A widget displayed below the items. Typically a `CSDescription`.
-  final Widget description;
-  final EdgeInsets padding;
+  final Widget? description;
+  final EdgeInsets? padding;
 
   /// The `BorderRadius` applied to the Container holding the items.
   ///
   /// Default: `BorderRadius.circular(10)`
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   CSSection({
-    Key key,
-    @required this.items,
+    Key? key,
+    required this.items,
     this.header,
     this.description,
     this.padding,
     this.borderRadius,
   })  : assert(
-          items != null && items.isNotEmpty,
+          items.isNotEmpty,
           'Items can not be null or empty.',
         ),
         super(key: key);
@@ -47,7 +47,7 @@ class CSSection extends StatelessWidget {
                   bottomBorder: BorderSide.none,
                 )
               else
-                header,
+                header!,
             ClipRRect(
               borderRadius: borderRadius ?? BorderRadius.circular(10),
               child: Column(
@@ -58,16 +58,13 @@ class CSSection extends StatelessWidget {
                     return DefaultCSWidgetTheme.merge(
                       child: e,
                       style: const CSWidgetStyle(
-                        topBorder: BorderSide.none,
                         bottomBorder: BorderSide.none,
                       ),
                     );
                   } else if (e == items.first) {
                     return DefaultCSWidgetTheme.merge(
                       child: e,
-                      style: const CSWidgetStyle(
-                        topBorder: BorderSide.none,
-                      ),
+                      style: const CSWidgetStyle(),
                     );
                   } else if (e == items.last) {
                     return DefaultCSWidgetTheme.merge(
@@ -84,10 +81,8 @@ class CSSection extends StatelessWidget {
             ),
             if (description != null)
               DefaultCSWidgetTheme.merge(
-                child: description,
-                style: const CSWidgetStyle(
-                  topBorder: BorderSide.none,
-                ),
+                child: description!,
+                style: const CSWidgetStyle(),
               ),
           ],
         ),

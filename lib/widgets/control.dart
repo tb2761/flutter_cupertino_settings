@@ -14,13 +14,13 @@ class CSControl extends CSWidget {
   final double fontSize;
 
   CSControl({
-    this.nameWidget,
-    this.contentWidget,
-    CSWidgetStyle style,
-    this.fontSize,
+    required this.nameWidget,
+    required this.contentWidget,
+    CSWidgetStyle? style,
+    this.fontSize = kCSTitleFontsize,
   }) : super(
           _ControlWidget(
-            fontSize: fontSize ?? kCSTitleFontsize,
+            fontSize: fontSize,
             contentWidget: contentWidget,
             nameWidget: nameWidget,
           ),
@@ -34,10 +34,10 @@ class _ControlWidget extends StatelessWidget {
   final double fontSize;
 
   const _ControlWidget({
-    Key key,
-    this.fontSize,
-    this.contentWidget,
-    this.nameWidget,
+    Key? key,
+    required this.fontSize,
+    required this.contentWidget,
+    required this.nameWidget,
   }) : super(key: key);
 
   @override
@@ -50,8 +50,8 @@ class _ControlWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          if (nameWidget != null) nameWidget,
-          if (contentWidget != null) contentWidget,
+          nameWidget,
+          contentWidget,
         ],
       ),
     );

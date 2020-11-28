@@ -42,11 +42,11 @@ typedef SelectionCallback = void Function(int selected);
 
 TextStyle basicTextStyle(BuildContext context) {
   if (kIsWeb) {
-    return Theme.of(context).textTheme.subtitle1;
+    return Theme.of(context).textTheme.subtitle1!;
   } else if (Platform.isIOS || Platform.isMacOS) {
     return CupertinoTheme.of(context).textTheme.textStyle;
   } else {
-    return Theme.of(context).textTheme.subtitle1;
+    return Theme.of(context).textTheme.subtitle1!;
   }
 }
 
@@ -58,15 +58,15 @@ BorderSide kCupertinoBorderSide(BuildContext context) => BorderSide(
 class CupertinoSettings extends StatelessWidget {
   final List<Widget> items;
   final bool shrinkWrap;
-  final ScrollController controller;
-  final ScrollPhysics physics;
-  final bool primary;
-  final EdgeInsetsGeometry padding;
+  final ScrollController? controller;
+  final ScrollPhysics? physics;
+  final bool? primary;
+  final EdgeInsetsGeometry? padding;
   final bool reverse;
   final Axis scrollDirection;
 
   const CupertinoSettings({
-    @required this.items,
+    required this.items,
     this.shrinkWrap = false,
     this.controller,
     this.physics,
@@ -79,7 +79,6 @@ class CupertinoSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultCSWidgetTheme(
-      height: kCSItemHeight,
       style: CSWidgetStyle.fallback(context),
       child: Container(
         color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
@@ -94,8 +93,8 @@ class CupertinoSettings extends StatelessWidget {
                   padding: padding,
                   primary: primary,
                   physics: physics,
-                  reverse: reverse ?? false,
-                  scrollDirection: scrollDirection ?? Axis.vertical,
+                  reverse: reverse,
+                  scrollDirection: scrollDirection,
                 )
               : Column(
                   children: <Widget>[
@@ -108,8 +107,8 @@ class CupertinoSettings extends StatelessWidget {
                         padding: padding,
                         primary: primary,
                         physics: physics,
-                        reverse: reverse ?? false,
-                        scrollDirection: scrollDirection ?? Axis.vertical,
+                        reverse: reverse,
+                        scrollDirection: scrollDirection,
                       ),
                     ),
                   ],

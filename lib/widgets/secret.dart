@@ -5,13 +5,13 @@ class CSSecret extends StatefulWidget {
   final String text;
   final String secret;
   final double fontSize;
-  final CSWidgetStyle style;
+  final CSWidgetStyle? style;
 
   const CSSecret(
     this.text,
     this.secret, {
     this.style,
-    this.fontSize,
+    this.fontSize = kCSTitleFontsize,
   });
 
   @override
@@ -23,11 +23,21 @@ class _CSSecretState extends State<CSSecret> {
 
   @override
   Widget build(BuildContext context) {
+    var effectiveWidgetStyle = const CSWidgetStyle(
+      addPaddingToBorder: true,
+    );
+
+    if (widget.style != null) {
+      effectiveWidgetStyle = effectiveWidgetStyle.merge(
+        widget.style!,
+      );
+    }
+
     return CSWidget(
       DefaultTextStyle(
         style: basicTextStyle(context).copyWith(
           color: CupertinoColors.label.resolveFrom(context),
-          fontSize: widget.fontSize ?? kCSTitleFontsize,
+          fontSize: widget.fontSize,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,11 +59,7 @@ class _CSSecretState extends State<CSSecret> {
           ],
         ),
       ),
-      style: const CSWidgetStyle(
-        addPaddingToBorder: true,
-      ).merge(
-        widget.style,
-      ),
+      style: effectiveWidgetStyle,
     );
   }
 }

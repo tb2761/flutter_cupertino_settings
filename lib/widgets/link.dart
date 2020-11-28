@@ -8,22 +8,22 @@ class CSLink extends StatelessWidget {
   /// The fontsize for the `subtitle`.
   final double subTitleFontSize;
   final String title;
-  final String subtitle;
-  final String detail;
-  final Widget trailing;
-  final VoidCallback onPressed;
-  final CSWidgetStyle style;
+  final String? subtitle;
+  final String? detail;
+  final Widget? trailing;
+  final VoidCallback? onPressed;
+  final CSWidgetStyle? style;
   final CellType cellType;
   final int subtitleMaxLines;
 
   const CSLink({
-    this.title,
+    required this.title,
     this.onPressed,
     this.subtitle,
     this.detail,
     this.style,
-    this.titleFontSize,
-    this.subTitleFontSize,
+    this.titleFontSize = kCSTitleFontsize,
+    this.subTitleFontSize = kCSSubtitleFontsize,
     this.trailing,
     this.cellType = CellType.defaultStyle,
     this.subtitleMaxLines = 1,
@@ -34,11 +34,11 @@ class CSLink extends StatelessWidget {
     final showSubtitle = (cellType == CellType.subtitleDetailStyle ||
             cellType == CellType.subtitleStyle) &&
         subtitle != null &&
-        subtitle.isNotEmpty;
+        subtitle!.isNotEmpty;
     final showDetail = (cellType == CellType.subtitleDetailStyle ||
             cellType == CellType.detailRightStyle) &&
         detail != null &&
-        detail.isNotEmpty;
+        detail!.isNotEmpty;
 
     return CSWidget(
       CupertinoButton(
@@ -57,7 +57,7 @@ class CSLink extends StatelessWidget {
                     title,
                     style: basicTextStyle(context).copyWith(
                       color: CupertinoColors.label.resolveFrom(context),
-                      fontSize: titleFontSize ?? kCSTitleFontsize,
+                      fontSize: titleFontSize,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -65,11 +65,11 @@ class CSLink extends StatelessWidget {
                   if (showSubtitle) ...[
                     const SizedBox(height: 2),
                     Text(
-                      subtitle,
+                      subtitle!,
                       style: basicTextStyle(context).copyWith(
                         color:
                             CupertinoColors.secondaryLabel.resolveFrom(context),
-                        fontSize: subTitleFontSize ?? kCSSubtitleFontsize,
+                        fontSize: subTitleFontSize,
                         fontWeight: FontWeight.w400,
                       ),
                       maxLines: subtitleMaxLines,
@@ -81,7 +81,7 @@ class CSLink extends StatelessWidget {
             ),
             if (showDetail) ...[
               Text(
-                detail,
+                detail!,
                 style: basicTextStyle(context).copyWith(
                   color: CupertinoColors.secondaryLabel.resolveFrom(context),
                   fontSize: titleFontSize,
@@ -92,7 +92,7 @@ class CSLink extends StatelessWidget {
               const SizedBox(width: 4),
             ],
             if (trailing != null)
-              trailing
+              trailing!
             else if (onPressed != null)
               Icon(
                 CupertinoIcons.right_chevron,

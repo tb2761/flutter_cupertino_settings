@@ -5,10 +5,10 @@ class DefaultCSWidgetTheme extends InheritedTheme {
   final double height;
 
   const DefaultCSWidgetTheme({
-    Key key,
-    this.height,
-    @required this.style,
-    @required Widget child,
+    Key? key,
+    this.height = kCSItemHeight,
+    required this.style,
+    required Widget child,
   }) : super(
           key: key,
           child: child,
@@ -18,12 +18,15 @@ class DefaultCSWidgetTheme extends InheritedTheme {
   ///
   /// Returned from [of] when the given [BuildContext] doesn't have an enclosing default text style.
   ///
-  /// This constructor creates a [DefaultCSWidgetTheme] that lacks a [child], which
-  /// means the constructed value cannot be incorporated into the tree.
-  DefaultCSWidgetTheme.fallback({Key key, BuildContext context})
+  /// This constructor creates a [DefaultCSWidgetTheme] that lacks a [child], 
+  /// which means the constructed value cannot be incorporated into the tree.
+  DefaultCSWidgetTheme.fallback({Key? key, required BuildContext context})
       : height = kCSItemHeight,
         style = CSWidgetStyle.fallback(context),
-        super(key: key, child: null);
+        super(
+          key: key,
+          child: const SizedBox(),
+        );
 
   /// The closest instance of this class that encloses the given context.
   ///
@@ -43,11 +46,10 @@ class DefaultCSWidgetTheme extends InheritedTheme {
   }
 
   static Widget merge({
-    Key key,
-    CSWidgetStyle style,
-    @required Widget child,
+    Key? key,
+    required CSWidgetStyle style,
+    required Widget child,
   }) {
-    assert(child != null);
     return Builder(
       builder: (context) {
         final parent = DefaultCSWidgetTheme.of(context);

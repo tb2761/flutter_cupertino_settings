@@ -4,7 +4,7 @@ part of flutter_cupertino_settings;
 /// The [title] attribute is optional.
 class CSHeader extends StatelessWidget {
   final String title;
-  final BorderSide bottomBorder;
+  final BorderSide? bottomBorder;
 
   const CSHeader(
     this.title, {

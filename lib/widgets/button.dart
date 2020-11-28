@@ -27,13 +27,12 @@ class CSButton extends CSWidget {
   final Widget child;
 
   CSButton({
-    @required this.child,
-    @required this.pressed,
-    @required this.buttonType,
-    this.fontSize,
-    CSWidgetStyle style,
-  })  : assert(child != null),
-        super(
+    required this.child,
+    required this.pressed,
+    this.buttonType = CSButtonType.defaultStyle,
+    this.fontSize = kCSTitleFontsize,
+    CSWidgetStyle? style,
+  }) : super(
           Flex(
             direction: Axis.horizontal,
             children: <Widget>[
@@ -42,11 +41,11 @@ class CSButton extends CSWidget {
                   padding: EdgeInsets.zero,
                   onPressed: pressed,
                   child: Container(
-                    alignment: (buttonType ?? CSButtonType.DEFAULT).alignment,
+                    alignment: buttonType.alignment,
                     child: DefaultTextStyle(
                       style: TextStyle(
-                        color: (buttonType ?? CSButtonType.DEFAULT).color,
-                        fontSize: fontSize ?? kCSTitleFontsize,
+                        color: buttonType.color,
+                        fontSize: fontSize,
                       ),
                       child: child,
                     ),
@@ -62,21 +61,23 @@ class CSButton extends CSWidget {
 /// Defines different types for [CSButton]
 /// Specifies color and alignment
 class CSButtonType {
-  static const CSButtonType DESTRUCTIVE = CSButtonType(
-    CupertinoColors.destructiveRed,
-    AlignmentDirectional.center,
-  );
-  static const CSButtonType DEFAULT = CSButtonType(
-    CupertinoColors.systemBlue,
-    AlignmentDirectional.centerStart,
-  );
-  static const CSButtonType DEFAULT_CENTER = CSButtonType(
-    CupertinoColors.systemBlue,
-    AlignmentDirectional.center,
-  );
-
   final Color color;
   final AlignmentGeometry alignment;
 
   const CSButtonType(this.color, this.alignment);
+
+  static const CSButtonType defaultStyle = CSButtonType(
+    CupertinoColors.systemBlue,
+    AlignmentDirectional.centerStart,
+  );
+
+  static const CSButtonType destructiveStyle = CSButtonType(
+    CupertinoColors.destructiveRed,
+    AlignmentDirectional.center,
+  );
+
+  static const CSButtonType defaultCenterStyle = CSButtonType(
+    CupertinoColors.systemBlue,
+    AlignmentDirectional.center,
+  );
 }

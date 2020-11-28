@@ -78,13 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
             pressed: () {
               print("It works!");
             },
-            buttonType: CSButtonType.DEFAULT,
+            buttonType: CSButtonType.defaultStyle
           ),
           const CSHeader(""),
           CSButton(
             child: Text("Delete all data"),
             pressed: () {},
-            buttonType: CSButtonType.DESTRUCTIVE,
+            buttonType: CSButtonType.destructiveStyle,
           ),
         ],
       ),

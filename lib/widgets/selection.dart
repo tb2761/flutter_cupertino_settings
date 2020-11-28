@@ -23,10 +23,10 @@ class CSSelection<T> extends StatelessWidget {
   final double fontSize;
 
   const CSSelection({
-    @required this.items,
-    @required this.onSelected,
-    @required this.currentSelection,
-    this.fontSize,
+    required this.items,
+    required this.onSelected,
+    required this.currentSelection,
+    this.fontSize = kCSTitleFontsize,
   });
 
   @override
@@ -55,7 +55,7 @@ class CSSelection<T> extends StatelessWidget {
                 item.text,
                 style: TextStyle(
                   color: CupertinoColors.label.resolveFrom(context),
-                  fontSize: fontSize ?? kCSTitleFontsize,
+                  fontSize: fontSize,
                 ),
               ),
             ),
@@ -70,7 +70,7 @@ class CSSelection<T> extends StatelessWidget {
       ),
       style: CSWidgetStyle(
         addPaddingToBorder: items.last != item,
-        topBorder: item.topBorder,
+        topBorder: item.topBorder ?? BorderSide.none,
         bottomBorder: item.bottomBorder ?? kCupertinoBorderSide(context),
       ),
     );
@@ -80,12 +80,12 @@ class CSSelection<T> extends StatelessWidget {
 class CSSelectionItem<T> {
   final T value;
   final String text;
-  final BorderSide topBorder;
-  final BorderSide bottomBorder;
+  final BorderSide? topBorder;
+  final BorderSide? bottomBorder;
 
   const CSSelectionItem({
-    @required this.value,
-    this.text,
+    required this.value,
+    required this.text,
     this.topBorder,
     this.bottomBorder,
   }) : assert(value != null);
