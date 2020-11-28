@@ -74,18 +74,16 @@ class _HomeScreenState extends State<HomeScreen> {
             contentWidget: const CupertinoActivityIndicator(),
           ),
           CSButton(
-            child: Text("Licenses"),
-            pressed: () {
-              print("It works!");
-            },
-            buttonType: CSButtonType.DEFAULT,
-          ),
+              child: Text("Licenses"),
+              pressed: () {
+                print("It works!");
+              },
+              buttonType: CSButtonType.defaultType),
           const CSHeader(""),
           CSButton(
-            child: Text("Delete all data"),
-            pressed: () {},
-            buttonType: CSButtonType.DESTRUCTIVE,
-          ),
+              child: Text("Delete all data"),
+              pressed: () {},
+              buttonType: CSButtonType.destructiveType),
         ],
       ),
     );

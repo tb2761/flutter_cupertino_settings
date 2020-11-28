@@ -42,10 +42,11 @@ class CSButton extends CSWidget {
                   padding: EdgeInsets.zero,
                   onPressed: pressed,
                   child: Container(
-                    alignment: (buttonType ?? CSButtonType.DEFAULT).alignment,
+                    alignment:
+                        (buttonType ?? CSButtonType.defaultType).alignment,
                     child: DefaultTextStyle(
                       style: TextStyle(
-                        color: (buttonType ?? CSButtonType.DEFAULT).color,
+                        color: (buttonType ?? CSButtonType.defaultType).color,
                         fontSize: fontSize ?? kCSTitleFontsize,
                       ),
                       child: child,
@@ -62,15 +63,15 @@ class CSButton extends CSWidget {
 /// Defines different types for [CSButton]
 /// Specifies color and alignment
 class CSButtonType {
-  static const CSButtonType DESTRUCTIVE = CSButtonType(
+  static const CSButtonType destructiveType = CSButtonType(
     CupertinoColors.destructiveRed,
     AlignmentDirectional.center,
   );
-  static const CSButtonType DEFAULT = CSButtonType(
+  static const CSButtonType defaultType = CSButtonType(
     CupertinoColors.systemBlue,
     AlignmentDirectional.centerStart,
   );
-  static const CSButtonType DEFAULT_CENTER = CSButtonType(
+  static const CSButtonType defaultCenterType = CSButtonType(
     CupertinoColors.systemBlue,
     AlignmentDirectional.center,
   );
