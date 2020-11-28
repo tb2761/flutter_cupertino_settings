@@ -5,10 +5,12 @@ part of flutter_cupertino_settings;
 class CSHeader extends StatelessWidget {
   final String title;
   final BorderSide bottomBorder;
+  final TextStyle style;
 
   const CSHeader(
     this.title, {
     this.bottomBorder,
+    this.style,
   });
 
   @override
@@ -23,10 +25,12 @@ class CSHeader extends StatelessWidget {
       ),
       child: Text(
         title.toUpperCase(),
-        style: basicTextStyle(context).copyWith(
-          color: CupertinoColors.secondaryLabel.resolveFrom(context),
-          fontSize: kCSHeaderFontsize,
-        ),
+        style: basicTextStyle(context)
+            .copyWith(
+              color: CupertinoColors.secondaryLabel.resolveFrom(context),
+              fontSize: kCSHeaderFontsize,
+            )
+            .merge(style),
       ),
     );
   }
