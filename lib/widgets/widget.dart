@@ -21,11 +21,11 @@ class CSWidget extends StatelessWidget {
     final effectiveWidgetStyle = defaultCSWidgetTheme.style.merge(style);
 
     Widget child;
-    EdgeInsets padding;
+    EdgeInsets padding = effectiveWidgetStyle.padding;
 
     //style.icon
     if (effectiveWidgetStyle.icon != null) {
-      padding = kCSIconPadding;
+      padding ??= kCSIconPadding;
       child = Row(
         children: <Widget>[
           Container(
@@ -37,7 +37,7 @@ class CSWidget extends StatelessWidget {
       );
     } else {
       child = widget;
-      padding = kCSItemPadding;
+      padding ??= kCSItemPadding;
     }
 
     return Container(

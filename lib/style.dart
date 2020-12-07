@@ -19,6 +19,8 @@ class CSWidgetStyle with Diagnosticable {
   /// Default: CupertinoColors.secondarySystemGroupedBackground
   final Color backgroundColor;
 
+  final EdgeInsets padding;
+
   const CSWidgetStyle({
     this.alignment,
     this.addPaddingToBorder,
@@ -26,6 +28,7 @@ class CSWidgetStyle with Diagnosticable {
     this.bottomBorder,
     this.backgroundColor,
     this.icon,
+    this.padding,
   });
 
   factory CSWidgetStyle.fallback(BuildContext context) => CSWidgetStyle(
@@ -48,6 +51,7 @@ class CSWidgetStyle with Diagnosticable {
       bottomBorder: other.bottomBorder,
       backgroundColor: other.backgroundColor,
       icon: other.icon,
+      padding: other.padding,
     );
   }
 
@@ -58,6 +62,7 @@ class CSWidgetStyle with Diagnosticable {
     BorderSide topBorder,
     BorderSide bottomBorder,
     Color backgroundColor,
+    EdgeInsets padding,
   }) {
     return CSWidgetStyle(
       icon: icon ?? this.icon,
@@ -66,12 +71,19 @@ class CSWidgetStyle with Diagnosticable {
       topBorder: topBorder ?? this.topBorder,
       bottomBorder: bottomBorder ?? this.bottomBorder,
       backgroundColor: backgroundColor ?? this.backgroundColor,
+      padding: padding ?? this.padding,
     );
   }
 
   @override
   String toStringShort() {
-    return 'CSWidgetStyle(icon: $icon, alignment: $alignment, addPaddingToBorder: $addPaddingToBorder, topBorder: $topBorder, bottomBorder: $bottomBorder, backgroundColor: $backgroundColor)';
+    return 'CSWidgetStyle(icon: $icon, '
+        'alignment: $alignment, '
+        'addPaddingToBorder: $addPaddingToBorder, '
+        'topBorder: $topBorder, '
+        'bottomBorder: $bottomBorder, '
+        'backgroundColor: $backgroundColor, '
+        'padding: $padding)';
   }
 
   @override
@@ -84,7 +96,8 @@ class CSWidgetStyle with Diagnosticable {
         o.addPaddingToBorder == addPaddingToBorder &&
         o.topBorder == topBorder &&
         o.bottomBorder == bottomBorder &&
-        o.backgroundColor == backgroundColor;
+        o.backgroundColor == backgroundColor &&
+        o.padding == padding;
   }
 
   @override
@@ -94,6 +107,7 @@ class CSWidgetStyle with Diagnosticable {
         addPaddingToBorder.hashCode ^
         topBorder.hashCode ^
         bottomBorder.hashCode ^
-        backgroundColor.hashCode;
+        backgroundColor.hashCode ^
+        padding.hashCode;
   }
 }
