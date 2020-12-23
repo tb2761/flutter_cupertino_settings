@@ -124,8 +124,7 @@ class CSSection extends StatelessWidget {
                           CupertinoColors.secondaryLabel.resolveFrom(context),
                     ),
                     child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 10),
+                      padding: const EdgeInsetsDirectional.only(bottom: 10),
                       child: description,
                     ),
                   ),
