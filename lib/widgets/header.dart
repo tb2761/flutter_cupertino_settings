@@ -28,7 +28,7 @@ class CSHeader extends StatelessWidget {
         style: basicTextStyle(context)
             .copyWith(
               color: CupertinoColors.secondaryLabel.resolveFrom(context),
-              fontSize: kCSHeaderFontsize,
+              fontSize: 13,
             )
             .merge(style),
       ),

@@ -45,9 +45,27 @@ class CSSection extends StatelessWidget {
                 CSHeader(
                   (header as CSHeader).title,
                   bottomBorder: BorderSide.none,
+                  style: TextStyle(
+                    fontSize: 13.0,
+                    color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                  ),
                 )
               else
-                header,
+                DefaultTextStyle(
+                  style: TextStyle(
+                    fontSize: 13.0,
+                    color: CupertinoColors.secondaryLabel.resolveFrom(context),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(
+                      0.0,
+                      16.0,
+                      20.0,
+                      10.0,
+                    ),
+                    child: header,
+                  ),
+                ),
             ClipRRect(
               borderRadius: borderRadius ?? BorderRadius.circular(10),
               child: Column(

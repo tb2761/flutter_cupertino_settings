@@ -22,10 +22,7 @@ part 'widgets/widget.dart';
 part 'widgets/widget_theme.dart';
 
 const double kCSItemHeight = 50.0;
-const EdgeInsets kCSItemPadding = EdgeInsets.symmetric(
-  horizontal: 10,
-  vertical: 1,
-);
+const EdgeInsets kCSItemPadding = EdgeInsets.fromLTRB(20.0, 4.0, 6.0, 4.0);
 const double kCSTitleFontsize = 16.0;
 const double kCSSubtitleFontsize = 11.0;
 const double kCSHeaderFontsize = 14.0;
