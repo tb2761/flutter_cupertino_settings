@@ -101,12 +101,35 @@ class CSSection extends StatelessWidget {
               ),
             ),
             if (description != null)
-              DefaultCSWidgetTheme.merge(
-                child: description,
-                style: const CSWidgetStyle(
-                  topBorder: BorderSide.none,
+              if (description is CSDescription)
+                DefaultCSWidgetTheme.merge(
+                  child: CSDescription(
+                    (description as CSDescription).description,
+                    padding: const EdgeInsets.fromLTRB(0, 7.5, 5, 5),
+                    backgroundColor:
+                        (description as CSDescription).backgroundColor,
+                    style: (description as CSDescription).style,
+                  ),
+                  style: const CSWidgetStyle(
+                    topBorder: BorderSide.none,
+                  ),
+                )
+              else
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: DefaultTextStyle(
+                    style: TextStyle(
+                      fontSize: 13.0,
+                      color:
+                          CupertinoColors.secondaryLabel.resolveFrom(context),
+                    ),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0, 0, 20, 10),
+                      child: description,
+                    ),
+                  ),
                 ),
-              ),
           ],
         ),
       ),
