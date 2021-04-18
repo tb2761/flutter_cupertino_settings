@@ -43,7 +43,7 @@ class CSSection extends StatelessWidget {
             if (header != null)
               if (header is CSHeader)
                 CSHeader(
-                  (header as CSHeader).title,
+                  (header! as CSHeader).title,
                   bottomBorder: BorderSide.none,
                 )
               else

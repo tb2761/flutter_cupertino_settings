@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
               CSSelectionItem<int>(text: 'Day mode', value: 0),
               CSSelectionItem<int>(text: 'Night mode', value: 1),
             ],
-            onSelected: (value) => setState(() => _index = value),
+            onSelected: (int value) => setState(() => _index = value),
             currentSelection: _index,
           ),
           const CSDescription(
