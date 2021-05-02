@@ -64,7 +64,9 @@ class CSSection extends StatelessWidget {
                   } else if (e == items.first) {
                     return DefaultCSWidgetTheme.merge(
                       child: e,
-                      style: const CSWidgetStyle(),
+                      style: const CSWidgetStyle(
+                        addPaddingToBorder: true,
+                      ),
                     );
                   } else if (e == items.last) {
                     return DefaultCSWidgetTheme.merge(
