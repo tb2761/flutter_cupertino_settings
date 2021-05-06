@@ -21,7 +21,7 @@ class CSWidgetStyle with Diagnosticable {
 
   const CSWidgetStyle({
     this.alignment,
-    this.addPaddingToBorder = false,
+    this.addPaddingToBorder = true,
     this.topBorder = BorderSide.none,
     this.bottomBorder,
     this.backgroundColor,
@@ -29,7 +29,6 @@ class CSWidgetStyle with Diagnosticable {
   });
 
   factory CSWidgetStyle.fallback(BuildContext context) => CSWidgetStyle(
-        addPaddingToBorder: true,
         backgroundColor: CupertinoColors.secondarySystemGroupedBackground
             .resolveFrom(context),
         bottomBorder: kCupertinoBorderSide(context),

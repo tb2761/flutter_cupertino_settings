@@ -49,9 +49,7 @@ class _CSSecretState extends State<CSSecret> {
           ],
         ),
       ),
-      style: const CSWidgetStyle(
-        addPaddingToBorder: true,
-      ).merge(widget.style),
+      style: const CSWidgetStyle().merge(widget.style),
     );
   }
 }
