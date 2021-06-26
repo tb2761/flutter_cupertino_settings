@@ -64,6 +64,7 @@ class CSSelection<T> extends StatelessWidget {
               color: item.value == currentSelection
                   ? CupertinoColors.activeBlue
                   : const Color(0x00000000),
+              size: 20,
             ),
           ],
         ),
