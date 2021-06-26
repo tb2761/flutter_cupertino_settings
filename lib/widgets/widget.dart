@@ -20,8 +20,8 @@ class CSWidget extends StatelessWidget {
     final defaultCSWidgetTheme = DefaultCSWidgetTheme.of(context);
     final effectiveWidgetStyle = defaultCSWidgetTheme.style.merge(style);
 
-    Widget child;
-    EdgeInsets padding;
+    Widget child = widget;
+    EdgeInsets padding = kCSItemPadding;
 
     //style.icon
     if (effectiveWidgetStyle.icon != null) {
@@ -32,12 +32,9 @@ class CSWidget extends StatelessWidget {
             padding: kCSIconPadding,
             child: effectiveWidgetStyle.icon,
           ),
-          Expanded(child: widget)
+          Expanded(child: widget),
         ],
       );
-    } else {
-      child = widget;
-      padding = kCSItemPadding;
     }
 
     return Container(
