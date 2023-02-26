@@ -25,10 +25,14 @@ class CSHeader extends StatelessWidget {
       ),
       child: Text(
         title.toUpperCase(),
-        style: basicTextStyle(context)
-            .copyWith(
-              color: CupertinoColors.secondaryLabel.resolveFrom(context),
-              fontSize: kCSHeaderFontsize,
+        style: CupertinoTheme.of(context)
+            .textTheme
+            .textStyle
+            .merge(
+              const TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+              ),
             )
             .merge(style),
       ),
