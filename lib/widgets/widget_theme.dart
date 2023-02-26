@@ -5,26 +5,22 @@ class DefaultCSWidgetTheme extends InheritedTheme {
   final double height;
 
   const DefaultCSWidgetTheme({
-    Key? key,
+    super.key,
     this.height = kCSItemHeight,
     required this.style,
-    required Widget child,
-  }) : super(
-          key: key,
-          child: child,
-        );
+    required super.child,
+  });
 
   /// A const-constructible default text style that provides fallback values.
   ///
   /// Returned from [of] when the given [BuildContext] doesn't have an enclosing default text style.
   ///
-  /// This constructor creates a [DefaultCSWidgetTheme] that lacks a [child], 
+  /// This constructor creates a [DefaultCSWidgetTheme] that lacks a [child],
   /// which means the constructed value cannot be incorporated into the tree.
-  DefaultCSWidgetTheme.fallback({Key? key, required BuildContext context})
+  DefaultCSWidgetTheme.fallback({super.key, required BuildContext context})
       : height = kCSItemHeight,
         style = CSWidgetStyle.fallback(context),
         super(
-          key: key,
           child: const SizedBox(),
         );
 
@@ -38,6 +34,7 @@ class DefaultCSWidgetTheme extends InheritedTheme {
   /// ```dart
   /// DefaultCSWidgetTheme style = DefaultCSWidgetTheme.of(context);
   /// ```
+  // ignore: prefer_constructors_over_static_methods
   static DefaultCSWidgetTheme of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<DefaultCSWidgetTheme>() ??
         DefaultCSWidgetTheme.fallback(

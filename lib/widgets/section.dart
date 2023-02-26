@@ -16,7 +16,7 @@ class CSSection extends StatelessWidget {
   final BorderRadius? borderRadius;
 
   CSSection({
-    Key? key,
+    super.key,
     required this.items,
     this.header,
     this.description,
@@ -25,8 +25,7 @@ class CSSection extends StatelessWidget {
   })  : assert(
           items.isNotEmpty,
           'Items can not be null or empty.',
-        ),
-        super(key: key);
+        );
 
   @override
   Widget build(BuildContext context) {

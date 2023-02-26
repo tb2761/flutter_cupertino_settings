@@ -7,10 +7,10 @@ class CSSpacer extends StatelessWidget {
   final Color? backgroundColor;
 
   const CSSpacer({
-    Key? key,
+    super.key,
     this.bottomBorder,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

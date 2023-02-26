@@ -55,10 +55,14 @@ class CSLink extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     title,
-                    style: basicTextStyle(context).copyWith(
-                      color: CupertinoColors.label.resolveFrom(context),
-                      fontSize: titleFontSize,
-                    ),
+                    style: showSubtitle
+                        ? CupertinoTheme.of(context).textTheme.textStyle.merge(
+                              const TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                              ),
+                            )
+                        : CupertinoTheme.of(context).textTheme.textStyle,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -66,12 +70,14 @@ class CSLink extends StatelessWidget {
                     const SizedBox(height: 2),
                     Text(
                       subtitle!,
-                      style: basicTextStyle(context).copyWith(
-                        color:
-                            CupertinoColors.secondaryLabel.resolveFrom(context),
-                        fontSize: subTitleFontSize,
-                        fontWeight: FontWeight.w400,
-                      ),
+                      style:
+                          CupertinoTheme.of(context).textTheme.textStyle.merge(
+                                TextStyle(
+                                  fontSize: 14,
+                                  color: CupertinoColors.secondaryLabel
+                                      .resolveFrom(context),
+                                ),
+                              ),
                       maxLines: subtitleMaxLines,
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -82,10 +88,12 @@ class CSLink extends StatelessWidget {
             if (showDetail) ...[
               Text(
                 detail!,
-                style: basicTextStyle(context).copyWith(
-                  color: CupertinoColors.secondaryLabel.resolveFrom(context),
-                  fontSize: titleFontSize,
-                ),
+                style: CupertinoTheme.of(context).textTheme.textStyle.merge(
+                      TextStyle(
+                        color:
+                            CupertinoColors.secondaryLabel.resolveFrom(context),
+                      ),
+                    ),
                 maxLines: 1,
                 overflow: TextOverflow.clip,
               ),
@@ -97,7 +105,7 @@ class CSLink extends StatelessWidget {
               Icon(
                 CupertinoIcons.right_chevron,
                 color: CupertinoColors.secondaryLabel.resolveFrom(context),
-                size: 20,
+                size: CupertinoTheme.of(context).textTheme.textStyle.fontSize,
               ),
           ],
         ),

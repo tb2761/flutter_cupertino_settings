@@ -2,9 +2,9 @@ library flutter_cupertino_settings;
 
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' show Theme;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
@@ -35,24 +35,23 @@ const EdgeInsets kCSIconPadding = EdgeInsets.only(
   right: 10.0,
   left: 4.0,
 );
-const double kCSBorderWidth = 0.75;
 
 /// Event for [CSSelection]
 typedef SelectionCallback = void Function(int selected);
 
 TextStyle basicTextStyle(BuildContext context) {
   if (kIsWeb) {
-    return Theme.of(context).textTheme.subtitle1!;
+    return Theme.of(context).textTheme.titleMedium!;
   } else if (Platform.isIOS || Platform.isMacOS) {
     return CupertinoTheme.of(context).textTheme.textStyle;
   } else {
-    return Theme.of(context).textTheme.subtitle1!;
+    return Theme.of(context).textTheme.titleMedium!;
   }
 }
 
 BorderSide kCupertinoBorderSide(BuildContext context) => BorderSide(
       color: CupertinoColors.opaqueSeparator.resolveFrom(context),
-      width: kCSBorderWidth,
+      width: 1 / MediaQuery.of(context).devicePixelRatio,
     );
 
 class CupertinoSettings extends StatelessWidget {
@@ -80,7 +79,7 @@ class CupertinoSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultCSWidgetTheme(
       style: CSWidgetStyle.fallback(context),
-      child: Container(
+      child: ColoredBox(
         color: CupertinoColors.systemGroupedBackground.resolveFrom(context),
         child: SafeArea(
           bottom: false,

@@ -34,11 +34,12 @@ class _ControlWidget extends StatelessWidget {
   final double fontSize;
 
   const _ControlWidget({
-    Key? key,
+    // ignore: unused_element
+    super.key,
     required this.fontSize,
     required this.contentWidget,
     required this.nameWidget,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
